@@ -2,54 +2,780 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aplicaciones del Efecto Doppler</title>
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <header>
-        <h1>Aplicaciones del Efecto Doppler</h1>
-        <button id="toggle-dark" class="modo-toggle">🌙 Modo Oscuro</button>
-    </header>
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="que-es.html">¿Qué es?</a>
-        <a href="ejemplos.html">Ejemplos</a>
-        <a href="formula.html">Fórmula</a>
-        <a href="experimento.html">Experimento</a>
-    </nav>
-    <div class="contenido">
-       <p>El efecto Doppler no solo es un concepto físico interesante, sino que también tiene numerosas aplicaciones prácticas en diferentes campos de la ciencia y la tecnología. A continuación, te presentamos algunas de las más importantes:</p>
-        <ul>
-            <li><strong>Medicina (Ecografía Doppler):</strong> Se usa para medir el flujo de la sangre en venas y arterias, ayudando a detectar coágulos, problemas cardíacos y circulación anormal.</li>
-            <li><strong>Astronomía:</strong> Permite saber si una estrella o galaxia se está acercando o alejando de nosotros, gracias al corrimiento al rojo o al azul en su espectro de luz.</li>
-            <li><strong>Meteorología:</strong> Los radares Doppler detectan la velocidad y dirección del viento, facilitando el pronóstico del clima y la localización de tormentas o huracanes.</li>
-            <li><strong>Control de tráfico:</strong> Los radares de velocidad funcionan midiendo el cambio de frecuencia del sonido o de ondas de radio para calcular la velocidad de los vehículos.</li>
-            <li><strong>Navegación satelital (GPS):</strong> Ayuda a mejorar la precisión del posicionamiento al medir los cambios de frecuencia entre el satélite y el receptor en movimiento.</li>
-        </ul>
-        <div style="text-align: center;">
-            <img src="efe.jpg" alt="Texto alternativo" style="width: 600px; height: auto;">
-        </div>
-    </div>
+    <!-- Fondo de partículas animadas -->
+    <div class="particles-bg"></div>
     
-    <footer>
-        Página educativa sobre el Efecto Doppler | Grupo 8
+    <!-- Ondas de sonido animadas -->
+    <div class="sound-waves">
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+    </div>
+
+    <header class="hero-header">
+        <div class="header-content">
+            <div class="doppler-animation">
+                <div class="source">🏥</div>
+                <div class="observer">🔬</div>
+                <div class="wave-animation">
+                    <div class="doppler-wave"></div>
+                    <div class="doppler-wave"></div>
+                    <div class="doppler-wave"></div>
+                </div>
+            </div>
+            <h1 class="title-animated">
+                <span class="letter">A</span>
+                <span class="letter">p</span>
+                <span class="letter">l</span>
+                <span class="letter">i</span>
+                <span class="letter">c</span>
+                <span class="letter">a</span>
+                <span class="letter">c</span>
+                <span class="letter">i</span>
+                <span class="letter">o</span>
+                <span class="letter">n</span>
+                <span class="letter">e</span>
+                <span class="letter">s</span>
+                <span class="space"> </span>
+                <span class="letter">d</span>
+                <span class="letter">e</span>
+                <span class="letter">l</span>
+                <span class="space"> </span>
+                <span class="letter">E</span>
+                <span class="letter">f</span>
+                <span class="letter">e</span>
+                <span class="letter">c</span>
+                <span class="letter">t</span>
+                <span class="letter">o</span>
+                <span class="space"> </span>
+                <span class="letter">D</span>
+                <span class="letter">o</span>
+                <span class="letter">p</span>
+                <span class="letter">p</span>
+                <span class="letter">l</span>
+                <span class="letter">e</span>
+                <span class="letter">r</span>
+            </h1>
+            <p class="subtitle-glow">"Descubre las increíbles aplicaciones prácticas del efecto Doppler en nuestra vida cotidiana"</p>
+            <button id="toggle-dark" class="modo-toggle">
+                <span class="toggle-icon">🌙</span>
+                <span class="toggle-text">Modo Oscuro</span>
+            </button>
+        </div>
+        <div class="header-decoration">
+            <div class="frequency-bars">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-modern">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Inicio</span>
+            </a>
+            <a href="que-es.html" class="nav-item">
+                <span class="nav-icon">❓</span>
+                <span class="nav-label">¿Qué es?</span>
+            </a>
+            <a href="ejemplos.html" class="nav-item">
+                <span class="nav-icon">🌟</span>
+                <span class="nav-label">Ejemplos</span>
+            </a>
+            <a href="formula.html" class="nav-item">
+                <span class="nav-icon">📐</span>
+                <span class="nav-label">Fórmula</span>
+            </a>
+            <a href="experimento.html" class="nav-item">
+                <span class="nav-icon">🎵</span>
+                <span class="nav-label">Experimento</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="contenido">
+        <section class="welcome-section">
+            <div class="content-card card-animate">
+                <h2 class="section-title">
+                    <span class="title-decoration">🔬</span>
+                    Aplicaciones Prácticas del Efecto Doppler
+                </h2>
+                
+                <div class="intro-text">
+                    <p>El efecto Doppler no solo es un concepto físico interesante, sino que también tiene numerosas aplicaciones prácticas en diferentes campos de la ciencia y la tecnología. A continuación, te presentamos algunas de las más importantes:</p>
+                </div>
+            </div>
+
+            <!-- Aplicaciones Grid -->
+            <div class="applications-grid">
+                <!-- Medicina -->
+                <div class="application-card card-animate" style="animation-delay: 0.1s;">
+                    <div class="app-header">
+                        <div class="app-icon medical">🏥</div>
+                        <h3>Medicina (Ecografía Doppler)</h3>
+                    </div>
+                    <div class="app-content">
+                        <p>Se usa para medir el flujo de la sangre en venas y arterias, ayudando a detectar coágulos, problemas cardíacos y circulación anormal.</p>
+                        <div class="app-features">
+                            <span class="feature-tag">💓 Cardiología</span>
+                            <span class="feature-tag">🩸 Flujo sanguíneo</span>
+                            <span class="feature-tag">🔍 Diagnóstico</span>
+                        </div>
+                    </div>
+                    <div class="app-animation">
+                        <div class="pulse-wave"></div>
+                        <div class="pulse-wave"></div>
+                        <div class="pulse-wave"></div>
+                    </div>
+                </div>
+
+                <!-- Astronomía -->
+                <div class="application-card card-animate" style="animation-delay: 0.2s;">
+                    <div class="app-header">
+                        <div class="app-icon astronomy">🌌</div>
+                        <h3>Astronomía</h3>
+                    </div>
+                    <div class="app-content">
+                        <p>Permite saber si una estrella o galaxia se está acercando o alejando de nosotros, gracias al corrimiento al rojo o al azul en su espectro de luz.</p>
+                        <div class="app-features">
+                            <span class="feature-tag">⭐ Estrellas</span>
+                            <span class="feature-tag">🌈 Espectro</span>
+                            <span class="feature-tag">🚀 Velocidad</span>
+                        </div>
+                    </div>
+                    <div class="app-animation">
+                        <div class="star-pulse"></div>
+                        <div class="light-beam"></div>
+                    </div>
+                </div>
+
+                <!-- Meteorología -->
+                <div class="application-card card-animate" style="animation-delay: 0.3s;">
+                    <div class="app-header">
+                        <div class="app-icon weather">🌦️</div>
+                        <h3>Meteorología</h3>
+                    </div>
+                    <div class="app-content">
+                        <p>Los radares Doppler detectan la velocidad y dirección del viento, facilitando el pronóstico del clima y la localización de tormentas o huracanes.</p>
+                        <div class="app-features">
+                            <span class="feature-tag">🌪️ Tormentas</span>
+                            <span class="feature-tag">💨 Viento</span>
+                            <span class="feature-tag">📡 Radar</span>
+                        </div>
+                    </div>
+                    <div class="app-animation">
+                        <div class="radar-sweep"></div>
+                        <div class="weather-particles"></div>
+                    </div>
+                </div>
+
+                <!-- Control de Tráfico -->
+                <div class="application-card card-animate" style="animation-delay: 0.4s;">
+                    <div class="app-header">
+                        <div class="app-icon traffic">🚦</div>
+                        <h3>Control de Tráfico</h3>
+                    </div>
+                    <div class="app-content">
+                        <p>Los radares de velocidad funcionan midiendo el cambio de frecuencia del sonido o de ondas de radio para calcular la velocidad de los vehículos.</p>
+                        <div class="app-features">
+                            <span class="feature-tag">🚗 Vehículos</span>
+                            <span class="feature-tag">⚡ Velocidad</span>
+                            <span class="feature-tag">🛡️ Seguridad</span>
+                        </div>
+                    </div>
+                    <div class="app-animation">
+                        <div class="speed-indicator"></div>
+                        <div class="radar-beam"></div>
+                    </div>
+                </div>
+
+                <!-- GPS -->
+                <div class="application-card card-animate" style="animation-delay: 0.5s;">
+                    <div class="app-header">
+                        <div class="app-icon gps">🛰️</div>
+                        <h3>Navegación Satelital (GPS)</h3>
+                    </div>
+                    <div class="app-content">
+                        <p>Ayuda a mejorar la precisión del posicionamiento al medir los cambios de frecuencia entre el satélite y el receptor en movimiento.</p>
+                        <div class="app-features">
+                            <span class="feature-tag">📍 Ubicación</span>
+                            <span class="feature-tag">🛰️ Satélites</span>
+                            <span class="feature-tag">🎯 Precisión</span>
+                        </div>
+                    </div>
+                    <div class="app-animation">
+                        <div class="satellite-orbit"></div>
+                        <div class="gps-signal"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imagen ilustrativa -->
+            <div class="content-card card-animate illustration-section" style="animation-delay: 0.6s;">
+                <h3 class="section-title">
+                    <span class="title-decoration">📊</span>
+                    Visualización del Efecto Doppler
+                </h3>
+                <div class="image-showcase">
+                    <div class="image-container">
+                        <img src="efe.jpg" alt="Ilustración del Efecto Doppler en sus diferentes aplicaciones" class="main-illustration"/>
+                        <div class="image-overlay">
+                            <div class="zoom-icon">🔍</div>
+                        </div>
+                    </div>
+                    <div class="image-description">
+                        <p>Esta ilustración muestra las diversas manifestaciones del efecto Doppler en diferentes campos de aplicación, desde las ondas sonoras hasta las electromagnéticas.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de comparación -->
+            <div class="content-card card-animate comparison-section" style="animation-delay: 0.7s;">
+                <h3 class="section-title">
+                    <span class="title-decoration">⚖️</span>
+                    Comparación de Aplicaciones
+                </h3>
+                <div class="comparison-table">
+                    <div class="comparison-row header-row">
+                        <div class="comparison-cell">Campo</div>
+                        <div class="comparison-cell">Tipo de Onda</div>
+                        <div class="comparison-cell">Precisión</div>
+                        <div class="comparison-cell">Uso Principal</div>
+                    </div>
+                    <div class="comparison-row" data-field="medical">
+                        <div class="comparison-cell"><span class="field-icon">🏥</span> Medicina</div>
+                        <div class="comparison-cell">Ultrasonido</div>
+                        <div class="comparison-cell"><div class="precision-bar" data-precision="90"></div></div>
+                        <div class="comparison-cell">Diagnóstico</div>
+                    </div>
+                    <div class="comparison-row" data-field="astronomy">
+                        <div class="comparison-cell"><span class="field-icon">🌌</span> Astronomía</div>
+                        <div class="comparison-cell">Luz visible</div>
+                        <div class="comparison-cell"><div class="precision-bar" data-precision="95"></div></div>
+                        <div class="comparison-cell">Investigación</div>
+                    </div>
+                    <div class="comparison-row" data-field="weather">
+                        <div class="comparison-cell"><span class="field-icon">🌦️</span> Meteorología</div>
+                        <div class="comparison-cell">Microondas</div>
+                        <div class="comparison-cell"><div class="precision-bar" data-precision="85"></div></div>
+                        <div class="comparison-cell">Pronóstico</div>
+                    </div>
+                    <div class="comparison-row" data-field="traffic">
+                        <div class="comparison-cell"><span class="field-icon">🚦</span> Tráfico</div>
+                        <div class="comparison-cell">Radio/Laser</div>
+                        <div class="comparison-cell"><div class="precision-bar" data-precision="98"></div></div>
+                        <div class="comparison-cell">Control</div>
+                    </div>
+                    <div class="comparison-row" data-field="gps">
+                        <div class="comparison-cell"><span class="field-icon">🛰️</span> GPS</div>
+                        <div class="comparison-cell">Radio</div>
+                        <div class="comparison-cell"><div class="precision-bar" data-precision="92"></div></div>
+                        <div class="comparison-cell">Navegación</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-modern">
+        <div class="footer-content">
+            <div class="footer-wave"></div>
+            <p>Página educativa sobre el Efecto Doppler | Creado por Grupo 8 - 2025</p>
+            <div class="footer-icons">
+                <span class="footer-icon">🔬</span>
+                <span class="footer-icon">📊</span>
+                <span class="footer-icon">🎵</span>
+            </div>
+        </div>
     </footer>
 
     <script>
+        // Toggle modo oscuro mejorado
         const btn = document.getElementById('toggle-dark');
         const body = document.body;
+        const toggleIcon = btn.querySelector('.toggle-icon');
+        const toggleText = btn.querySelector('.toggle-text');
 
-        if (localStorage.getItem('modo-oscuro') === 'true') {
-            body.classList.add('modo-oscuro');
-            btn.textContent = '☀️ Modo Claro';
+        let darkMode = false;
+
+        function updateToggle() {
+            if (darkMode) {
+                body.classList.add('modo-oscuro');
+                toggleIcon.textContent = '☀️';
+                toggleText.textContent = 'Modo Claro';
+            } else {
+                body.classList.remove('modo-oscuro');
+                toggleIcon.textContent = '🌙';
+                toggleText.textContent = 'Modo Oscuro';
+            }
         }
 
         btn.addEventListener('click', () => {
-            body.classList.toggle('modo-oscuro');
-            const darkMode = body.classList.contains('modo-oscuro');
-            btn.textContent = darkMode ? '☀️ Modo Claro' : '🌙 Modo Oscuro';
-            localStorage.setItem('modo-oscuro', darkMode);
+            darkMode = !darkMode;
+            updateToggle();
+            
+            body.style.transition = 'all 0.3s ease';
+            setTimeout(() => {
+                body.style.transition = '';
+            }, 300);
+        });
+
+        // Animación de las letras del título
+        window.addEventListener('load', () => {
+            const letters = document.querySelectorAll('.letter');
+            letters.forEach((letter, index) => {
+                letter.style.animationDelay = `${index * 0.05}s`;
+            });
+
+            // Animar barras de precisión
+            const precisionBars = document.querySelectorAll('.precision-bar');
+            precisionBars.forEach((bar, index) => {
+                setTimeout(() => {
+                    const precision = bar.getAttribute('data-precision');
+                    bar.style.width = precision + '%';
+                }, index * 200);
+            });
+        });
+
+        // Efecto parallax suave en scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.particles-bg');
+            const soundWaves = document.querySelector('.sound-waves');
+            
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+            if (soundWaves) {
+                soundWaves.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Intersection Observer para animaciones
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.card-animate, .application-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Hover effects para comparison table
+        const comparisonRows = document.querySelectorAll('.comparison-row:not(.header-row)');
+        comparisonRows.forEach(row => {
+            row.addEventListener('mouseenter', () => {
+                row.style.transform = 'translateX(10px)';
+                row.style.boxShadow = '0 8px 30px rgba(66, 165, 245, 0.3)';
+            });
+            
+            row.addEventListener('mouseleave', () => {
+                row.style.transform = 'translateX(0)';
+                row.style.boxShadow = 'none';
+            });
+        });
+
+        // Animación de pulso para aplicaciones médicas
+        function animatePulseWaves() {
+            const pulseWaves = document.querySelectorAll('.pulse-wave');
+            pulseWaves.forEach((wave, index) => {
+                wave.style.animationDelay = `${index * 0.5}s`;
+            });
+        }
+
+        // Inicializar todas las animaciones
+        window.addEventListener('load', () => {
+            animatePulseWaves();
+            
+            // Animar elementos específicos de cada aplicación
+            setTimeout(() => {
+                document.querySelectorAll('.app-animation').forEach(animation => {
+                    animation.classList.add('active');
+                });
+            }, 1000);
         });
     </script>
-</body>
-</html>
+
+    <style>
+        /* Estilos específicos para aplicaciones */
+        .intro-text {
+            font-size: 1.1rem;
+            line-height: 1.7;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-lg);
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .applications-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: var(--space-lg);
+            margin: var(--space-xl) 0;
+        }
+
+        .application-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95), rgba(248, 251, 255, 0.95));
+            border-radius: var(--radius-lg);
+            padding: var(--space-xl);
+            border: 2px solid transparent;
+            transition: all var(--transition-normal);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .application-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary-color), var(--primary-light), var(--accent-color));
+            transform: scaleX(0);
+            transition: transform var(--transition-slow);
+            transform-origin: left;
+        }
+
+        .application-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .application-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(66, 165, 245, 0.2);
+            border-color: var(--primary-light);
+        }
+
+        .app-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-lg);
+        }
+
+        .app-icon {
+            font-size: 2.5rem;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius-md);
+            animation: iconFloat 3s ease-in-out infinite;
+        }
+
+        .app-icon.medical {
+            background: linear-gradient(135deg, #e8f5e8, #c8e6c9);
+        }
+
+        .app-icon.astronomy {
+            background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+        }
+
+        .app-icon.weather {
+            background: linear-gradient(135deg, #f3e5f5, #e1bee7);
+        }
+
+        .app-icon.traffic {
+            background: linear-gradient(135deg, #fff3e0, #ffcc02);
+        }
+
+        .app-icon.gps {
+            background: linear-gradient(135deg, #e0f2f1, #b2dfdb);
+        }
+
+        .app-header h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--primary-dark);
+            margin: 0;
+        }
+
+        .app-content p {
+            font-size: 1rem;
+            line-height: 1.6;
+            color: var(--text-secondary);
+            margin-bottom: var(--space-md);
+        }
+
+        .app-features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-xs);
+        }
+
+        .feature-tag {
+            background: rgba(66, 165, 245, 0.1);
+            color: var(--primary-color);
+            padding: 4px 8px;
+            border-radius: var(--radius-sm);
+            font-size: 0.8rem;
+            font-weight: 500;
+            border: 1px solid rgba(66, 165, 245, 0.2);
+        }
+
+        .app-animation {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 40px;
+            height: 40px;
+            opacity: 0.3;
+        }
+
+        /* Animaciones específicas */
+        .pulse-wave {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            border: 2px solid #4caf50;
+            border-radius: 50%;
+            animation: pulseExpand 2s ease-in-out infinite;
+        }
+
+        @keyframes pulseExpand {
+            0% { transform: scale(0.5); opacity: 1; }
+            100% { transform: scale(2); opacity: 0; }
+        }
+
+        .star-pulse {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, #ffeb3b, transparent);
+            border-radius: 50%;
+            animation: starTwinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes starTwinkle {
+            0%, 100% { opacity: 0.5; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.2); }
+        }
+
+        .radar-sweep {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            border: 2px solid #2196f3;
+            border-radius: 50%;
+            border-top-color: transparent;
+            animation: radarSpin 2s linear infinite;
+        }
+
+        @keyframes radarSpin {
+            to { transform: rotate(360deg); }
+        }
+
+        .speed-indicator {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: linear-gradient(45deg, #ff5722, #ff9800);
+            border-radius: 50%;
+            animation: speedPulse 1.5s ease-in-out infinite;
+        }
+
+        @keyframes speedPulse {
+            0%, 100% { transform: scale(0.8); }
+            50% { transform: scale(1.2); }
+        }
+
+        .satellite-orbit {
+            position: absolute;
+            width: 35px;
+            height: 35px;
+            border: 2px solid #009688;
+            border-radius: 50%;
+            border-left-color: transparent;
+            animation: satelliteOrbit 4s linear infinite;
+        }
+
+        @keyframes satelliteOrbit {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Sección de ilustración */
+        .illustration-section {
+            text-align: center;
+        }
+
+        .image-showcase {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: var(--space-lg);
+        }
+
+        .image-container {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-lg);
+            transition: all var(--transition-normal);
+        }
+
+        .main-illustration {
+            width: 100%;
+            max-width: 600px;
+            height: auto;
+            border-radius: var(--radius-lg);
+            transition: all var(--transition-normal);
+        }
+
+        .image-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all var(--transition-normal);
+            border-radius: var(--radius-lg);
+        }
+
+        .zoom-icon {
+            font-size: 3rem;
+            color: white;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+            transform: scale(0.8);
+            transition: all var(--transition-fast);
+        }
+
+        .image-container:hover .image-overlay {
+            opacity: 1;
+        }
+
+        .image-container:hover .zoom-icon {
+            transform: scale(1);
+        }
+
+        .image-container:hover .main-illustration {
+            transform: scale(1.05);
+        }
+
+        .image-description {
+            max-width: 600px;
+            font-style: italic;
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Tabla de comparación */
+        .comparison-section {
+            overflow-x: auto;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            gap: 0;
+            transition: all var(--transition-fast);
+        }
+
+        .header-row {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            font-weight: 600;
+        }
+
+        .comparison-row:not(.header-row) {
+            background: rgba(255, 255, 255, 0.8);
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .comparison-row:not(.header-row):hover {
+            background: rgba(66, 165, 245, 0.05);
+        }
+
+        .comparison-cell {
+            padding: var(--space-md);
+            display: flex;
+            align-items: center;
+            gap: var(--space-xs);
+        }
+
+        .field-icon {
+            font-size: 1.2rem;
+        }
+
+        .precision-bar {
+            width: 0;
+            height: 20px;
+            background: linear-gradient(90deg, #4caf50, #8bc34a);
+            border-radius: 10px;
+            transition: width 1s ease-out;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .precision-bar::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            animation: shimmerPrecision 2s ease-in-out infinite;
+        }
+
+        @keyframes shimmerPrecision {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .applications-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .comparison-row {
+                grid-template-columns: 1fr;
+                gap: var(--space-xs);
+            }
+            
+            .comparison-cell {
+                padding: var(--space-sm);
+                border-bottom: 1px solid var(--border-color);
+            }
+            
+            .header-row .comparison-cell {
+                background: var(--primary-color);
+                color: white;
+                font-weight: 600;
+            }
+        }
