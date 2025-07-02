@@ -4,7 +4,173 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Simulador del Efecto Doppler</title>
+     <nav class="nav-modern">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item" data-text="Inicio">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Inicio</span>
+            </a>
+            <a href="que-es.html" class="nav-item" data-text="¿Qué es?">
+                <span class="nav-icon">❓</span>
+                <span class="nav-label">¿Qué es?</span>
+            </a>
+            <a href="ejemplos.html" class="nav-item" data-text="Ejemplos">
+                <span class="nav-icon">🌟</span>
+                <span class="nav-label">Ejemplos</span>
+            </a>
+            <a href="formula.html" class="nav-item" data-text="Fórmula">
+                <span class="nav-icon">📐</span>
+                <span class="nav-label">Fórmula</span>
+            </a>
+            <a href="aplicaciones.html" class="nav-item" data-text="Aplicaciones">
+                <span class="nav-icon">🔬</span>
+                <span class="nav-label">Aplicaciones</span>
+            </a>
+            <a href="experimento.html" class="nav-item" data-text="Experimento">
+                <span class="nav-icon">🎵</span>
+                <span class="nav-label">Experimento</span>
+            </a>
+        </div>
+
     <style>
+         .nav-modern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            backdrop-filter: blur(25px);
+            background: rgba(102, 126, 234, 0.15);
+            padding: 12px 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            box-shadow: 0 8px 40px rgba(102, 126, 234, 0.3),
+                        0 2px 10px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nav-modern:hover {
+            background: rgba(102, 126, 234, 0.2);
+            box-shadow: 0 12px 50px rgba(102, 126, 234, 0.4),
+                        0 4px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 18px;
+            text-decoration: none;
+            color: #f8f9fa;
+            border-radius: 40px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            font-weight: 500;
+            font-size: 0.9rem;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-item:hover {
+            background: linear-gradient(45deg, rgba(78, 205, 196, 0.3), rgba(69, 183, 209, 0.3));
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 8px 25px rgba(78, 205, 196, 0.4);
+            color: #ffffff;
+        }
+
+        .nav-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .nav-item:hover::before {
+            left: 100%;
+        }
+
+        .nav-icon {
+            font-size: 1.2rem;
+            filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.3));
+            transition: transform 0.3s ease;
+        }
+
+        .nav-item:hover .nav-icon {
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .nav-label {
+            white-space: nowrap;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive design mejorado */
+        @media (max-width: 1024px) {
+            .nav-item {
+                padding: 10px 14px;
+                font-size: 0.85rem;
+            }
+            
+            .nav-container {
+                gap: 6px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-modern {
+                padding: 8px 15px;
+            }
+
+            .nav-container {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 4px;
+            }
+
+            .nav-item {
+                padding: 8px 12px;
+                font-size: 0.8rem;
+                border-radius: 20px;
+            }
+
+            .nav-label {
+                display: none;
+            }
+
+            .nav-icon {
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-modern {
+                padding: 6px 10px;
+            }
+
+            .nav-item {
+                padding: 6px 10px;
+                min-width: 44px;
+                justify-content: center;
+            }
+
+            .nav-container {
+                gap: 3px;
+            }
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -19,6 +185,7 @@
             padding: 20px;
             position: relative;
             overflow-x: hidden;
+            padding-top: 80px; /* Espacio para el menú fijo */
         }
 
         /* Fondo de partículas animadas similar al index */
@@ -371,6 +538,10 @@
         }
 
         @media (max-width: 768px) {
+            body {
+                padding-top: 120px; /* Más espacio en móvil */
+            }
+            
             .simulator-area {
                 grid-template-columns: 1fr;
             }
@@ -390,6 +561,32 @@
             .controls {
                 padding: 20px;
             }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding-top: 140px; /* Aún más espacio en móviles pequeños */
+            }
+        }
+
+        /* Efectos adicionales para coherencia visual */
+        .container::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
+            border-radius: 27px;
+            z-index: -1;
+            opacity: 0.3;
+            animation: borderGlow 3s ease-in-out infinite alternate;
+        }
+
+        @keyframes borderGlow {
+            0% { opacity: 0.3; }
+            100% { opacity: 0.6; }
         }
 
         /* Efectos adicionales para coherencia visual */
@@ -414,6 +611,8 @@
     </style>
 </head>
 <body>
+   
+    </nav>
     <!-- Fondo de partículas animadas -->
     <div class="particles-bg"></div>
     
