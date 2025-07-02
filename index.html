@@ -1,734 +1,280 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Efecto Doppler - Física Interactiva</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 50%, #16213e 100%);
-            color: #ffffff;
-            min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
-        }
-
-        /* Fondo de estrellas animado */
-        .stars {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .star {
-            position: absolute;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle 4s infinite ease-in-out alternate;
-        }
-
-        .star:nth-child(odd) {
-            animation-delay: 2s;
-        }
-
-        @keyframes twinkle {
-            0% { 
-                opacity: 0.3; 
-                transform: scale(1);
-                box-shadow: 0 0 5px rgba(255, 255, 255, 0.3);
-            }
-            100% { 
-                opacity: 1; 
-                transform: scale(1.2);
-                box-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-            }
-        }
-
-        /* Header/Navigation */
-        .header {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(15px);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(64, 255, 218, 0.3);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #40ffda;
-            text-decoration: none;
-            text-shadow: 0 0 10px rgba(64, 255, 218, 0.5);
-            transition: all 0.3s ease;
-        }
-
-        .logo:hover {
-            text-shadow: 0 0 20px rgba(64, 255, 218, 0.8);
-            transform: scale(1.05);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            position: relative;
-            padding: 0.5rem 1rem;
-            border-radius: 25px;
-        }
-
-        .nav-links a:hover {
-            color: #40ffda;
-            background: rgba(64, 255, 218, 0.1);
-            box-shadow: 0 0 15px rgba(64, 255, 218, 0.3);
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            position: relative;
-            padding: 2rem;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            animation: fadeInUp 1s ease-out;
-        }
-
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(50px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-title {
-            font-size: clamp(3rem, 8vw, 6rem);
-            color: #40ffda;
-            margin-bottom: 1rem;
-            text-shadow: 0 0 20px rgba(64, 255, 218, 0.6);
-            animation: glow 2s ease-in-out infinite alternate;
-            line-height: 1.1;
-        }
-
-        @keyframes glow {
-            from { text-shadow: 0 0 20px rgba(64, 255, 218, 0.6); }
-            to { text-shadow: 0 0 30px rgba(64, 255, 218, 0.9), 0 0 40px rgba(64, 255, 218, 0.4); }
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1.2rem, 3vw, 2rem);
-            color: #b0b0b0;
-            margin-bottom: 2rem;
-            line-height: 1.4;
-        }
-
-        .hero-description {
-            font-size: 1.2rem;
-            color: #e0e0e0;
-            margin-bottom: 3rem;
-            line-height: 1.6;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        /* Botones Hero */
-        .hero-buttons {
-            display: flex;
-            gap: 1.5rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 1rem 2rem;
-            border-radius: 25px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn-primary {
-            background: linear-gradient(45deg, #40ffda, #0080ff);
-            color: #000;
-            box-shadow: 0 4px 15px rgba(64, 255, 218, 0.3);
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(64, 255, 218, 0.4);
-        }
-
-        .btn-secondary {
-            background: rgba(255, 255, 255, 0.1);
-            color: #40ffda;
-            border: 2px solid #40ffda;
-            backdrop-filter: blur(10px);
-        }
-
-        .btn-secondary:hover {
-            background: rgba(64, 255, 218, 0.1);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(64, 255, 218, 0.2);
-        }
-
-        /* Secciones de contenido */
-        .section {
-            padding: 4rem 0;
-            position: relative;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 5vw, 3rem);
-            color: #40ffda;
-            text-align: center;
-            margin-bottom: 3rem;
-            text-shadow: 0 0 15px rgba(64, 255, 218, 0.5);
-        }
-
-        /* Grid de características */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        .feature-card {
-            background: rgba(255, 255, 255, 0.05);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(64, 255, 218, 0.3);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #40ffda, transparent);
-            transition: left 0.5s;
-        }
-
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(64, 255, 218, 0.2);
-            border-color: #40ffda;
-        }
-
-        .feature-card:hover::before {
-            left: 100%;
-        }
-
-        .feature-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-            display: block;
-        }
-
-        .feature-title {
-            font-size: 1.5rem;
-            color: #40ffda;
-            margin-bottom: 1rem;
-        }
-
-        .feature-description {
-            color: #b0b0b0;
-            line-height: 1.6;
-        }
-
-        /* Sección de explicación visual */
-        .visual-section {
-            background: rgba(255, 255, 255, 0.03);
-            border-radius: 20px;
-            padding: 3rem;
-            margin: 3rem 0;
-            border: 1px solid rgba(64, 255, 218, 0.2);
-        }
-
-        .doppler-visual {
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-            flex-wrap: wrap;
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-
-        .wave-demo {
-            text-align: center;
-            flex: 1;
-            min-width: 200px;
-        }
-
-        .wave-title {
-            color: #40ffda;
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        .wave-circle {
-            width: 100px;
-            height: 100px;
-            border: 3px solid #40ffda;
-            border-radius: 50%;
-            margin: 0 auto 1rem;
-            position: relative;
-            animation: pulse 2s infinite;
-        }
-
-        .wave-circle.approaching {
-            animation: compress 1.5s infinite;
-        }
-
-        .wave-circle.receding {
-            animation: expand 2.5s infinite;
-        }
-
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50% { transform: scale(1.2); opacity: 0.7; }
-        }
-
-        @keyframes compress {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(0.8); }
-        }
-
-        @keyframes expand {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.4); }
-        }
-
-        .frequency-display {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 0.5rem 1rem;
-            border-radius: 20px;
-            font-family: 'Courier New', monospace;
-            color: #40ffda;
-        }
-
-        /* Simulación preview */
-        .simulation-preview {
-            background: rgba(0, 0, 0, 0.2);
-            border-radius: 15px;
-            padding: 2rem;
-            text-align: center;
-            border: 1px solid rgba(64, 255, 218, 0.3);
-        }
-
-        .sim-placeholder {
-            background: linear-gradient(45deg, rgba(64, 255, 218, 0.1), rgba(0, 128, 255, 0.1));
-            height: 200px;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2rem;
-            color: #40ffda;
-            margin-bottom: 1rem;
-            border: 2px dashed rgba(64, 255, 218, 0.3);
-        }
-
-        /* Footer */
-        .footer {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(10px);
-            padding: 2rem 0;
-            text-align: center;
-            border-top: 1px solid rgba(64, 255, 218, 0.3);
-            margin-top: 4rem;
-        }
-
-        .footer-content {
-            color: #b0b0b0;
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.6;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .nav {
-                flex-direction: column;
-                gap: 1rem;
-                padding: 1rem;
-            }
-
-            .nav-links {
-                gap: 1rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .doppler-visual {
-                flex-direction: column;
-            }
-
-            .visual-section {
-                padding: 2rem;
-            }
-        }
-
-        /* Animaciones de scroll */
-        .scroll-fade {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
-
-        .scroll-fade.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-    </style>
+    <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <!-- Fondo de estrellas -->
-    <div class="stars" id="stars"></div>
+    <!-- Fondo de partículas animadas -->
+    <div class="particles-bg"></div>
+    
+    <!-- Ondas de sonido animadas -->
+    <div class="sound-waves">
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+    </div>
 
-    <!-- Header -->
-    <header class="header">
-        <nav class="nav">
-            <a href="index.html" class="logo">🌌 Efecto Doppler</a>
-            <ul class="nav-links">
-                <li><a href="index.html">Inicio</a></li>
-                <li><a href="ejemplos.html">Ejemplos</a></li>
-                <li><a href="simulacion.html">Simulación</a></li>
-            </ul>
-        </nav>
+    <header class="hero-header">
+        <div class="header-content">
+            <div class="doppler-animation">
+                <div class="source">🚗</div>
+                <div class="observer">👤</div>
+                <div class="wave-animation">
+                    <div class="doppler-wave"></div>
+                    <div class="doppler-wave"></div>
+                    <div class="doppler-wave"></div>
+                </div>
+            </div>
+            <h1 class="title-animated">
+                <span class="letter">E</span>
+                <span class="letter">f</span>
+                <span class="letter">e</span>
+                <span class="letter">c</span>
+                <span class="letter">t</span>
+                <span class="letter">o</span>
+                <span class="space"> </span>
+                <span class="letter">D</span>
+                <span class="letter">o</span>
+                <span class="letter">p</span>
+                <span class="letter">p</span>
+                <span class="letter">l</span>
+                <span class="letter">e</span>
+                <span class="letter">r</span>
+            </h1>
+            <p class="subtitle-glow">"El Efecto Doppler: la ciencia detrás del sonido que se acerca y se aleja."</p>
+            <button id="toggle-dark" class="modo-toggle">
+                <span class="toggle-icon">🌙</span>
+                <span class="toggle-text">Modo Oscuro</span>
+            </button>
+        </div>
+        <div class="header-decoration">
+            <div class="frequency-bars">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
     </header>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">Efecto Doppler</h1>
-            <p class="hero-subtitle">El cambio de frecuencia que transforma nuestro universo</p>
-            <p class="hero-description">
-                Descubre el fascinante fenómeno físico que explica por qué las sirenas cambian de tono, 
-                cómo los radares detectan la velocidad y por qué sabemos que el universo se expande.
-            </p>
-            <div class="hero-buttons">
-                <a href="ejemplos.html" class="btn btn-primary">🚀 Ver Ejemplos</a>
-                <a href="simulacion.html" class="btn btn-secondary">🔬 Simulación</a>
-            </div>
+    <nav class="nav-modern">
+        <div class="nav-container">
+            <a href="que-es.html" class="nav-item" data-text="¿Qué es?">
+                <span class="nav-icon">❓</span>
+                <span class="nav-label">¿Qué es?</span>
+            </a>
+            <a href="ejemplos.html" class="nav-item" data-text="Ejemplos">
+                <span class="nav-icon">🌟</span>
+                <span class="nav-label">Ejemplos</span>
+            </a>
+            <a href="formula.html" class="nav-item" data-text="Fórmula">
+                <span class="nav-icon">📐</span>
+                <span class="nav-label">Fórmula</span>
+            </a>
+            <a href="aplicaciones.html" class="nav-item" data-text="Aplicaciones">
+                <span class="nav-icon">🔬</span>
+                <span class="nav-label">Aplicaciones</span>
+            </a>
+            <a href="experimento.html" class="nav-item" data-text="Experimento">
+                <span class="nav-icon">🎵</span>
+                <span class="nav-label">Experimento</span>
+            </a>
         </div>
-    </section>
+    </nav>
 
-    <!-- Sección de características -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title scroll-fade">¿Qué es el Efecto Doppler?</h2>
-            
-            <div class="features-grid">
-                <div class="feature-card scroll-fade">
-                    <div class="feature-icon">🌊</div>
-                    <h3 class="feature-title">Cambio de Frecuencia</h3>
-                    <p class="feature-description">
-                        Cuando una fuente de ondas se mueve relativo al observador, 
-                        la frecuencia percibida cambia debido a la compresión o expansión de las ondas.
-                    </p>
-                </div>
-
-                <div class="feature-card scroll-fade">
-                    <div class="feature-icon">🎵</div>
-                    <h3 class="feature-title">Ondas Sonoras</h3>
-                    <p class="feature-description">
-                        El ejemplo más común: una ambulancia que se acerca suena más aguda, 
-                        y cuando se aleja, más grave. El sonido "cambia de tono".
-                    </p>
-                </div>
-
-                <div class="feature-card scroll-fade">
-                    <div class="feature-icon">🌟</div>
-                    <h3 class="feature-title">Luz y Astronomía</h3>
-                    <p class="feature-description">
-                        También aplica a la luz: las estrellas que se alejan se ven más rojas, 
-                        y las que se acercan más azules. Así descubrimos la expansión del universo.
-                    </p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Visualización del efecto -->
-    <section class="section">
-        <div class="container">
-            <div class="visual-section scroll-fade">
-                <h2 class="section-title">Visualización del Efecto</h2>
-                <p style="text-align: center; color: #b0b0b0; margin-bottom: 2rem;">
-                    Observa cómo cambia la frecuencia según el movimiento de la fuente
-                </p>
+    <main class="contenido">
+        <section class="welcome-section">
+            <div class="content-card card-animate">
+                <h2 class="section-title">
+                    <span class="title-decoration">🎯</span>
+                    Bienvenido al sitio del Efecto Doppler
+                </h2>
                 
-                <div class="doppler-visual">
-                    <div class="wave-demo">
-                        <h4 class="wave-title">Fuente Acercándose</h4>
-                        <div class="wave-circle approaching"></div>
-                        <div class="frequency-display">f' > f₀</div>
-                        <p style="color: #40ffda; margin-top: 0.5rem;">Frecuencia más alta</p>
-                    </div>
+                <div class="team-section">
+                    <h3 class="team-title">Este grupo está conformado por:</h3>
+                    <ul class="team-list">
+                        <li class="team-member">
+                            <span class="member-icon">👨‍🎓</span>
+                            Iván Jeanpierre Canales Samaniego
+                        </li>
+                        <li class="team-member">
+                            <span class="member-icon">👨‍🎓</span>
+                            Jousthyne Denny Cepda Almeida
+                        </li>
+                        <li class="team-member">
+                            <span class="member-icon">👨‍🎓</span>
+                            Miguel Angel de la Rosa Mirando
+                        </li>
+                        <li class="team-member">
+                            <span class="member-icon">👨‍🎓</span>
+                            Jerenmi Shamir Flores Jimenez
+                        </li>
+                        <li class="team-member">
+                            <span class="member-icon">👨‍🎓</span>
+                            Joel Angel Brito Lopez
+                        </li>
+                    </ul>
+                </div>
+            </div>
 
-                    <div class="wave-demo">
-                        <h4 class="wave-title">Fuente Estática</h4>
-                        <div class="wave-circle"></div>
-                        <div class="frequency-display">f' = f₀</div>
-                        <p style="color: #40ffda; margin-top: 0.5rem;">Frecuencia original</p>
-                    </div>
-
-                    <div class="wave-demo">
-                        <h4 class="wave-title">Fuente Alejándose</h4>
-                        <div class="wave-circle receding"></div>
-                        <div class="frequency-display">f' < f₀</div>
-                        <p style="color: #40ffda; margin-top: 0.5rem;">Frecuencia más baja</p>
+            <div class="content-card card-animate" style="animation-delay: 0.2s;">
+                <div class="topics-section">
+                    <h3 class="topics-title">En esta página web estaremos explicando:</h3>
+                    <div class="topics-grid">
+                        <div class="topic-card">
+                            <div class="topic-icon">❓</div>
+                            <h4>¿Qué es el Efecto Doppler?</h4>
+                            <p>Descubre los fundamentos de este fenómeno físico</p>
+                        </div>
+                        <div class="topic-card">
+                            <div class="topic-icon">🌟</div>
+                            <h4>Ejemplos del Efecto Doppler</h4>
+                            <p>Situaciones cotidianas donde se manifiesta</p>
+                        </div>
+                        <div class="topic-card">
+                            <div class="topic-icon">📐</div>
+                            <h4>Fórmula del Efecto Doppler</h4>
+                            <p>Ecuaciones matemáticas que lo describen</p>
+                        </div>
+                        <div class="topic-card">
+                            <div class="topic-icon">🔬</div>
+                            <h4>Aplicaciones del Efecto Doppler</h4>
+                            <p>Usos prácticos en ciencia y tecnología</p>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Aplicaciones -->
-    <section class="section">
-        <div class="container">
-            <h2 class="section-title scroll-fade">Aplicaciones Reales</h2>
-            
-            <div class="features-grid">
-                <div class="feature-card scroll-fade">
-                    <div class="feature-icon">🚁</div>
-                    <h3 class="feature-title">Radar y Velocimetría</h3>
-                    <p class="feature-description">
-                        Los radares de tráfico y meteorológicos usan el efecto Doppler 
-                        para medir velocidades con precisión increíble.
-                    </p>
-                </div>
-
-                <div class="feature-card scroll-fade">
-                    <div class="feature-icon">🏥</div>
-                    <h3 class="feature-title">Medicina</h3>
-                    <p class="feature-description">
-                        Los ultrasonidos Doppler permiten ver el flujo sanguíneo 
-                        y detectar problemas cardiovasculares sin cirugía.
-                    </p>
-                </div>
-
-                <div class="feature-card scroll-fade">
-                    <div class="feature-icon">🔭</div>
-                    <h3 class="feature-title">Exploración Espacial</h3>
-                    <p class="feature-description">
-                        Fundamental para entender el cosmos: medir distancias galácticas, 
-                        detectar exoplanetas y estudiar la expansión del universo.
-                    </p>
+            <div class="content-card card-animate fl-studio-section" style="animation-delay: 0.4s;">
+                <div class="studio-content">
+                    <div class="studio-text">
+                        <h3 class="studio-title">
+                            <span class="music-note">🎵</span>
+                            Experimento con FL Studio
+                        </h3>
+                        <p>Realizaremos un experimento práctico utilizando FL Studio para demostrar el efecto Doppler en el ámbito musical y sonoro.</p>
+                    </div>
+                    <div class="studio-image">
+                        <div class="image-container">
+                            <img src="FLSTUDIO.png" alt="FL Studio" class="fl-studio-img"/>
+                            <div class="image-overlay">
+                                <div class="play-button">▶️</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+    </main>
 
-    <!-- Preview de simulación -->
-    <section class="section">
-        <div class="container">
-            <div class="simulation-preview scroll-fade">
-                <h2 class="section-title">Experimenta con la Simulación</h2>
-                <div class="sim-placeholder">
-                    🎛️ Simulación Interactiva
-                </div>
-                <p style="color: #b0b0b0; margin-bottom: 1.5rem;">
-                    Ajusta la velocidad y frecuencia para ver el efecto Doppler en tiempo real
-                </p>
-                <a href="simulacion.html" class="btn btn-primary">Abrir Simulación</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container">
-            <div class="footer-content">
-                <p>
-                    Explora el fascinante mundo de la física ondulatoria y descubre 
-                    cómo el efecto Doppler conecta el sonido que escuchamos con 
-                    los misterios más profundos del universo.
-                </p>
-                <p style="margin-top: 1rem; color: #40ffda;">
-                    🌌 Hecho con curiosidad científica
-                </p>
+    <footer class="footer-modern">
+        <div class="footer-content">
+            <div class="footer-wave"></div>
+            <p>Página educativa sobre el Efecto Doppler | Creado por Grupo 8 - 2025</p>
+            <div class="footer-icons">
+                <span class="footer-icon">🔬</span>
+                <span class="footer-icon">📊</span>
+                <span class="footer-icon">🎵</span>
             </div>
         </div>
     </footer>
 
     <script>
-        // Generar estrellas de fondo
-        function createStars() {
-            const starsContainer = document.getElementById('stars');
-            const numberOfStars = 200;
-            
-            for (let i = 0; i < numberOfStars; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                
-                // Posición aleatoria
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                
-                // Tamaño aleatorio
-                const size = Math.random() * 3 + 1;
-                star.style.width = size + 'px';
-                star.style.height = size + 'px';
-                
-                // Retraso de animación aleatorio
-                star.style.animationDelay = Math.random() * 4 + 's';
-                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                
-                starsContainer.appendChild(star);
+        // Toggle modo oscuro mejorado
+        const btn = document.getElementById('toggle-dark');
+        const body = document.body;
+        const toggleIcon = btn.querySelector('.toggle-icon');
+        const toggleText = btn.querySelector('.toggle-text');
+
+        // Verificar modo guardado en localStorage (sin usar localStorage en artifacts)
+        let darkMode = false;
+
+        function updateToggle() {
+            if (darkMode) {
+                body.classList.add('modo-oscuro');
+                toggleIcon.textContent = '☀️';
+                toggleText.textContent = 'Modo Claro';
+            } else {
+                body.classList.remove('modo-oscuro');
+                toggleIcon.textContent = '🌙';
+                toggleText.textContent = 'Modo Oscuro';
             }
         }
 
-        // Animaciones de scroll
-        function initScrollAnimations() {
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
-                    }
-                });
-            }, { 
-                threshold: 0.1,
-                rootMargin: '0px 0px -50px 0px'
-            });
+        btn.addEventListener('click', () => {
+            darkMode = !darkMode;
+            updateToggle();
+            
+            // Efecto de transición suave
+            body.style.transition = 'all 0.3s ease';
+            setTimeout(() => {
+                body.style.transition = '';
+            }, 300);
+        });
 
-            const fadeElements = document.querySelectorAll('.scroll-fade');
-            fadeElements.forEach((el, index) => {
-                el.style.transitionDelay = `${index * 0.1}s`;
-                observer.observe(el);
+        // Animación de las letras del título
+        window.addEventListener('load', () => {
+            const letters = document.querySelectorAll('.letter');
+            letters.forEach((letter, index) => {
+                letter.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Animación de las ondas Doppler
+        function animateDopplerWaves() {
+            const waves = document.querySelectorAll('.doppler-wave');
+            waves.forEach((wave, index) => {
+                wave.style.animationDelay = `${index * 0.3}s`;
             });
         }
 
-        // Efecto parallax suave
-        function initParallax() {
-            window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                const rate = scrolled * -0.3;
-                
-                const hero = document.querySelector('.hero-content');
-                if (hero) {
-                    hero.style.transform = `translateY(${rate * 0.1}px)`;
+        // Inicializar animaciones
+        window.addEventListener('load', () => {
+            animateDopplerWaves();
+            
+            // Animar barras de frecuencia
+            const bars = document.querySelectorAll('.frequency-bars .bar');
+            bars.forEach((bar, index) => {
+                bar.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Efecto parallax suave en scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.particles-bg');
+            const soundWaves = document.querySelector('.sound-waves');
+            
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+            if (soundWaves) {
+                soundWaves.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Intersección observer para animaciones de entrada
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
                 }
             });
-        }
+        }, observerOptions);
 
-        // Inicializar todo
-        document.addEventListener('DOMContentLoaded', () => {
-            createStars();
-            initScrollAnimations();
-            initParallax();
-        });
-
-        // Efecto de hover en botones con ripple
-        document.querySelectorAll('.btn').forEach(btn => {
-            btn.addEventListener('click', function(e) {
-                const ripple = document.createElement('span');
-                const rect = this.getBoundingClientRect();
-                const size = Math.max(rect.width, rect.height);
-                const x = e.clientX - rect.left - size / 2;
-                const y = e.clientY - rect.top - size / 2;
-                
-                ripple.style.width = ripple.style.height = size + 'px';
-                ripple.style.left = x + 'px';
-                ripple.style.top = y + 'px';
-                ripple.classList.add('ripple');
-                
-                this.appendChild(ripple);
-                
-                setTimeout(() => {
-                    ripple.remove();
-                }, 600);
-            });
+        // Observar elementos animables
+        document.querySelectorAll('.card-animate, .topic-card, .team-member').forEach(el => {
+            observer.observe(el);
         });
     </script>
-
-    <style>
-        /* Efecto ripple para botones */
-        .btn {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .ripple {
-            position: absolute;
-            background: rgba(255, 255, 255, 0.3);
-            border-radius: 50%;
-            transform: scale(0);
-            animation: ripple-animation 0.6s ease-out;
-            pointer-events: none;
-        }
-
-        @keyframes ripple-animation {
-            to {
-                transform: scale(2);
-                opacity: 0;
-            }
-        }
-    </style>
 </body>
 </html>
