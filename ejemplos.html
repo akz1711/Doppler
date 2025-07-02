@@ -2,63 +2,261 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ejemplos del Efecto Doppler</title>
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <header>
-        <h1>Ejemplos del Efecto Doppler</h1>
-        <button id="toggle-dark" class="modo-toggle">🌙 Modo Oscuro</button>
-    </header>
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="que-es.html">¿Qué es?</a>
-        <a href="formula.html">Fórmula</a>
-        <a href="aplicaciones.html">Aplicaciones</a>
-        <a href="experimento.html">Experimento</a>
-    </nav>
-    <div class="contenido">
-        <h2>Ejemplo de una sirena de ambulancia</h2>
-        <p>Cuando una ambulancia se acerca con la sirena encendida, el sonido que percibimos es más agudo. En cambio, cuando se aleja, el sonido se vuelve <strong> más grave.</strong></p>
-        <h3>Explicación:</h3>
-        <p>Esto sucede porque, al acercarse, las ondas sonoras se comprimen, aumentando su frecuencia. Al alejarse, las ondas se expanden, reduciendo la frecuencia. Esto es el Efecto Doppler aplicado al sonido.</p>
-        <div style="text-align: center;">
-            <img src="ambulancia.jpg" alt="Texto alternativo" style="width: 600px; height: auto;">
-        </div>
-        <h2>Ejemplo 2: Luz de una estrella lejana</h2>
-        <p>En astronomía, si una estrella se aleja de la Tierra, su luz tiende a desplazarse hacia el rojo (corrimiento al rojo). Si se acerca, la luz se desplaza hacia el azul (corrimiento al azul).</p>
-        <h3>Explicación:</h3>
-        <p>Este efecto ocurre porque las ondas electromagnéticas (como la luz) también se ven afectadas por el movimiento relativo. Es esencial para medir la velocidad de galaxias y la expansión del universo.</p>
-        <div style="text-align: center;">
-            <img src="efecto-doppler-astronomia.jpg" alt="Texto alternativo" style="width: 550px; height: auto;">
-        </div>
-        <h2>Ejemplo 3: Radar de velocidad</h2>
-        <p>Los radares de tráfico utilizan el Efecto Doppler para calcular la velocidad de los autos. Emiten ondas que rebotan en el vehículo y regresan modificadas.</p>
-        <h3>Explicación:</h3>
-        <p>Si el coche se mueve hacia el radar, la frecuencia de retorno es más alta; si se aleja, es más baja. El radar compara esta diferencia y calcula la velocidad con gran precisión.</p>
-        <div style="text-align: center;">
-            <img src="radar.jpeg" alt="Texto alternativo" style="width: 550px; height: auto;">
-            <p><strong>De igual manera veremos la Fórmula de efecto Doppler, se encontrará en la parte de arriba☝🏻</strong></p>
-        </div>
+    <!-- Fondo de partículas animadas -->
+    <div class="particles-bg"></div>
+    
+    <!-- Ondas de sonido animadas -->
+    <div class="sound-waves">
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
     </div>
-    <footer>
-        Página educativa sobre el Efecto Doppler | Grupo 8
+
+    <header class="hero-header">
+        <div class="header-content">
+            <div class="doppler-animation">
+                <div class="source">🚑</div>
+                <div class="observer">👂</div>
+                <div class="wave-animation">
+                    <div class="doppler-wave"></div>
+                    <div class="doppler-wave"></div>
+                    <div class="doppler-wave"></div>
+                </div>
+            </div>
+            <h1 class="title-animated">
+                <span class="letter">E</span>
+                <span class="letter">j</span>
+                <span class="letter">e</span>
+                <span class="letter">m</span>
+                <span class="letter">p</span>
+                <span class="letter">l</span>
+                <span class="letter">o</span>
+                <span class="letter">s</span>
+                <span class="space"> </span>
+                <span class="letter">D</span>
+                <span class="letter">o</span>
+                <span class="letter">p</span>
+                <span class="letter">p</span>
+                <span class="letter">l</span>
+                <span class="letter">e</span>
+                <span class="letter">r</span>
+            </h1>
+            <p class="subtitle-glow">"Casos reales donde experimentamos el Efecto Doppler en nuestra vida cotidiana"</p>
+            <button id="toggle-dark" class="modo-toggle">
+                <span class="toggle-icon">🌙</span>
+                <span class="toggle-text">Modo Oscuro</span>
+            </button>
+        </div>
+        <div class="header-decoration">
+            <div class="frequency-bars">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-modern">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Inicio</span>
+            </a>
+            <a href="que-es.html" class="nav-item">
+                <span class="nav-icon">❓</span>
+                <span class="nav-label">¿Qué es?</span>
+            </a>
+            <a href="formula.html" class="nav-item">
+                <span class="nav-icon">📐</span>
+                <span class="nav-label">Fórmula</span>
+            </a>
+            <a href="aplicaciones.html" class="nav-item">
+                <span class="nav-icon">🔬</span>
+                <span class="nav-label">Aplicaciones</span>
+            </a>
+            <a href="experimento.html" class="nav-item">
+                <span class="nav-icon">🎵</span>
+                <span class="nav-label">Experimento</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="contenido">
+        <section class="welcome-section">
+            <!-- Ejemplo 1: Sirena de Ambulancia -->
+            <div class="content-card card-animate">
+                <h2 class="section-title">
+                    <span class="title-decoration">🚑</span>
+                    Sirena de Ambulancia
+                </h2>
+                <p>Cuando una ambulancia se acerca con la sirena encendida, el sonido que percibimos es más agudo. En cambio, cuando se aleja, el sonido se vuelve <strong>más grave.</strong></p>
+                
+                <h3 class="team-title">Explicación:</h3>
+                <p>Esto sucede porque, al acercarse, las ondas sonoras se comprimen, aumentando su frecuencia. Al alejarse, las ondas se expanden, reduciendo la frecuencia. Esto es el Efecto Doppler aplicado al sonido.</p>
+                
+                <div class="imagen">
+                    <img src="ambulancia.jpg" alt="Ambulancia con sirena encendida" style="width: 100%; max-width: 600px; height: auto;">
+                </div>
+            </div>
+
+            <!-- Ejemplo 2: Luz de Estrella -->
+            <div class="content-card card-animate" style="animation-delay: 0.2s;">
+                <h2 class="section-title">
+                    <span class="title-decoration">⭐</span>
+                    Luz de una Estrella Lejana
+                </h2>
+                <p>En astronomía, si una estrella se aleja de la Tierra, su luz tiende a desplazarse hacia el rojo (corrimiento al rojo). Si se acerca, la luz se desplaza hacia el azul (corrimiento al azul).</p>
+                
+                <h3 class="team-title">Explicación:</h3>
+                <p>Este efecto ocurre porque las ondas electromagnéticas (como la luz) también se ven afectadas por el movimiento relativo. Es esencial para medir la velocidad de galaxias y la expansión del universo.</p>
+                
+                <div class="imagen">
+                    <img src="efecto-doppler-astronomia.jpg" alt="Desplazamiento al rojo de las estrellas" style="width: 100%; max-width: 550px; height: auto;">
+                </div>
+            </div>
+
+            <!-- Ejemplo 3: Radar de Velocidad -->
+            <div class="content-card card-animate" style="animation-delay: 0.4s;">
+                <h2 class="section-title">
+                    <span class="title-decoration">📡</span>
+                    Radar de Velocidad
+                </h2>
+                <p>Los radares de tráfico utilizan el Efecto Doppler para calcular la velocidad de los autos. Emiten ondas que rebotan en el vehículo y regresan modificadas.</p>
+                
+                <h3 class="team-title">Explicación:</h3>
+                <p>Si el coche se mueve hacia el radar, la frecuencia de retorno es más alta; si se aleja, es más baja. El radar compara esta diferencia y calcula la velocidad con gran precisión.</p>
+                
+                <div class="imagen">
+                    <img src="radar.jpeg" alt="Radar de velocidad de tráfico" style="width: 100%; max-width: 550px; height: auto;">
+                </div>
+                
+                <div class="content-card" style="background: linear-gradient(135deg, rgba(66, 165, 245, 0.1), rgba(144, 202, 249, 0.1)); margin-top: var(--space-lg); padding: var(--space-md); text-align: center;">
+                    <p><strong>💡 Explora la Fórmula del Efecto Doppler en la sección correspondiente ☝🏻</strong></p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-modern">
+        <div class="footer-content">
+            <div class="footer-wave"></div>
+            <p>Página educativa sobre el Efecto Doppler | Grupo 8</p>
+            <div class="footer-icons">
+                <span class="footer-icon">🔬</span>
+                <span class="footer-icon">📊</span>
+                <span class="footer-icon">🎵</span>
+            </div>
+        </div>
     </footer>
 
     <script>
+        // Toggle modo oscuro mejorado
         const btn = document.getElementById('toggle-dark');
         const body = document.body;
+        const toggleIcon = btn.querySelector('.toggle-icon');
+        const toggleText = btn.querySelector('.toggle-text');
 
-        if (localStorage.getItem('modo-oscuro') === 'true') {
-            body.classList.add('modo-oscuro');
-            btn.textContent = '☀️ Modo Claro';
+        let darkMode = false;
+
+        function updateToggle() {
+            if (darkMode) {
+                body.classList.add('modo-oscuro');
+                toggleIcon.textContent = '☀️';
+                toggleText.textContent = 'Modo Claro';
+            } else {
+                body.classList.remove('modo-oscuro');
+                toggleIcon.textContent = '🌙';
+                toggleText.textContent = 'Modo Oscuro';
+            }
         }
 
         btn.addEventListener('click', () => {
-            body.classList.toggle('modo-oscuro');
-            const darkMode = body.classList.contains('modo-oscuro');
-            btn.textContent = darkMode ? '☀️ Modo Claro' : '🌙 Modo Oscuro';
-            localStorage.setItem('modo-oscuro', darkMode);
+            darkMode = !darkMode;
+            updateToggle();
+            
+            body.style.transition = 'all 0.3s ease';
+            setTimeout(() => {
+                body.style.transition = '';
+            }, 300);
+        });
+
+        // Animación de las letras del título
+        window.addEventListener('load', () => {
+            const letters = document.querySelectorAll('.letter');
+            letters.forEach((letter, index) => {
+                letter.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Animación de las ondas Doppler
+        function animateDopplerWaves() {
+            const waves = document.querySelectorAll('.doppler-wave');
+            waves.forEach((wave, index) => {
+                wave.style.animationDelay = `${index * 0.3}s`;
+            });
+        }
+
+        // Inicializar animaciones
+        window.addEventListener('load', () => {
+            animateDopplerWaves();
+            
+            const bars = document.querySelectorAll('.frequency-bars .bar');
+            bars.forEach((bar, index) => {
+                bar.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Efecto parallax suave en scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.particles-bg');
+            const soundWaves = document.querySelector('.sound-waves');
+            
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+            if (soundWaves) {
+                soundWaves.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Intersección observer para animaciones
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos animables
+        document.querySelectorAll('.card-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Efecto hover mejorado para imágenes
+        document.querySelectorAll('.imagen img').forEach(img => {
+            img.addEventListener('mouseenter', () => {
+                img.style.transform = 'scale(1.05) rotate(1deg)';
+                img.style.filter = 'brightness(1.1) contrast(1.1)';
+            });
+            
+            img.addEventListener('mouseleave', () => {
+                img.style.transform = 'scale(1) rotate(0deg)';
+                img.style.filter = 'brightness(1) contrast(1)';
+            });
         });
     </script>
 </body>
