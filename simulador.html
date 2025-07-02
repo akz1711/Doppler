@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador del Efecto Doppler</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: white;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        .simulator-area {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 30px;
+            margin-bottom: 30px;
+        }
+
+        .canvas-container {
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        #canvas {
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-radius: 10px;
+            background: #1a1a2e;
+        }
+
+        .controls {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+        }
+
+        .control-group {
+            margin-bottom: 20px;
+        }
+
+        .control-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+
+        .slider-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        input[type="range"] {
+            flex: 1;
+            height: 8px;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.3);
+            outline: none;
+            -webkit-appearance: none;
+        }
+
+        input[type="range"]::-webkit-slider-thumb {
+            -webkit-appearance: none;
+            appearance: none;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        input[type="range"]::-moz-range-thumb {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #4CAF50;
+            cursor: pointer;
+            border: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .value-display {
+            min-width: 80px;
+            padding: 5px 10px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 8px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 8px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 1rem;
+        }
+
+        .start-btn {
+            background: #4CAF50;
+            color: white;
+        }
+
+        .start-btn:hover {
+            background: #45a049;
+            transform: translateY(-2px);
+        }
+
+        .stop-btn {
+            background: #f44336;
+            color: white;
+        }
+
+        .stop-btn:hover {
+            background: #da190b;
+            transform: translateY(-2px);
+        }
+
+        .reset-btn {
+            background: #ff9800;
+            color: white;
+        }
+
+        .reset-btn:hover {
+            background: #e68900;
+            transform: translateY(-2px);
+        }
+
+        .info-panel {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .info-card h3 {
+            margin-bottom: 10px;
+            color: #4CAF50;
+        }
+
+        .info-card .value {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .info-card .unit {
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+
+        @media (max-width: 768px) {
+            .simulator-area {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌊 Simulador del Efecto Doppler</h1>
+        
+        <div class="simulator-area">
+            <div class="canvas-container">
+                <canvas id="canvas" width="600" height="400"></canvas>
+            </div>
+            
+            <div class="controls">
+                <div class="control-group">
+                    <label>Frecuencia Original (Hz)</label>
+                    <div class="slider-container">
+                        <input type="range" id="frequency" min="100" max="1000" value="440" step="10">
+                        <div class="value-display" id="frequencyValue">440 Hz</div>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label>Velocidad de la Fuente (m/s)</label>
+                    <div class="slider-container">
+                        <input type="range" id="sourceSpeed" min="0" max="100" value="20" step="1">
+                        <div class="value-display" id="sourceSpeedValue">20 m/s</div>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label>Velocidad del Sonido (m/s)</label>
+                    <div class="slider-container">
+                        <input type="range" id="soundSpeed" min="300" max="400" value="343" step="1">
+                        <div class="value-display" id="soundSpeedValue">343 m/s</div>
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label>Amplitud de Onda</label>
+                    <div class="slider-container">
+                        <input type="range" id="amplitude" min="10" max="50" value="30" step="5">
+                        <div class="value-display" id="amplitudeValue">30</div>
+                    </div>
+                </div>
+                
+                <div class="button-group">
+                    <button class="start-btn" onclick="startSimulation()">▶ Iniciar</button>
+                    <button class="stop-btn" onclick="stopSimulation()">⏸ Pausar</button>
+                    <button class="reset-btn" onclick="resetSimulation()">🔄 Reiniciar</button>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-panel">
+            <div class="info-card">
+                <h3>Frecuencia Observada (Acercándose)</h3>
+                <div class="value" id="approachingFreq">440</div>
+                <div class="unit">Hz</div>
+            </div>
+            
+            <div class="info-card">
+                <h3>Frecuencia Observada (Alejándose)</h3>
+                <div class="value" id="recedingFreq">440</div>
+                <div class="unit">Hz</div>
+            </div>
+            
+            <div class="info-card">
+                <h3>Cambio de Frecuencia</h3>
+                <div class="value" id="frequencyChange">0</div>
+                <div class="unit">Hz</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        
+        let animationId;
+        let time = 0;
+        let sourcePosition = 50;
+        let isRunning = false;
+        let sourceDirection = 1;
+        
+        // Variables de configuración
+        let frequency = 440;
+        let sourceSpeed = 20;
+        let soundSpeed = 343;
+        let amplitude = 30;
+        
+        // Elementos del DOM
+        const frequencySlider = document.getElementById('frequency');
+        const sourceSpeedSlider = document.getElementById('sourceSpeed');
+        const soundSpeedSlider = document.getElementById('soundSpeed');
+        const amplitudeSlider = document.getElementById('amplitude');
+        
+        const frequencyValue = document.getElementById('frequencyValue');
+        const sourceSpeedValue = document.getElementById('sourceSpeedValue');
+        const soundSpeedValue = document.getElementById('soundSpeedValue');
+        const amplitudeValue = document.getElementById('amplitudeValue');
+        
+        const approachingFreqEl = document.getElementById('approachingFreq');
+        const recedingFreqEl = document.getElementById('recedingFreq');
+        const frequencyChangeEl = document.getElementById('frequencyChange');
+        
+        // Event listeners para los controles
+        frequencySlider.addEventListener('input', (e) => {
+            frequency = parseInt(e.target.value);
+            frequencyValue.textContent = frequency + ' Hz';
+            updateFrequencyCalculations();
+        });
+        
+        sourceSpeedSlider.addEventListener('input', (e) => {
+            sourceSpeed = parseInt(e.target.value);
+            sourceSpeedValue.textContent = sourceSpeed + ' m/s';
+            updateFrequencyCalculations();
+        });
+        
+        soundSpeedSlider.addEventListener('input', (e) => {
+            soundSpeed = parseInt(e.target.value);
+            soundSpeedValue.textContent = soundSpeed + ' m/s';
+            updateFrequencyCalculations();
+        });
+        
+        amplitudeSlider.addEventListener('input', (e) => {
+            amplitude = parseInt(e.target.value);
+            amplitudeValue.textContent = amplitude;
+        });
+        
+        function updateFrequencyCalculations() {
+            // Efecto Doppler: f' = f * (v ± vo) / (v ± vs)
+            // Cuando la fuente se acerca: f' = f * v / (v - vs)
+            // Cuando la fuente se aleja: f' = f * v / (v + vs)
+            
+            const approachingFreq = frequency * soundSpeed / (soundSpeed - sourceSpeed);
+            const recedingFreq = frequency * soundSpeed / (soundSpeed + sourceSpeed);
+            const change = approachingFreq - recedingFreq;
+            
+            approachingFreqEl.textContent = Math.round(approachingFreq);
+            recedingFreqEl.textContent = Math.round(recedingFreq);
+            frequencyChangeEl.textContent = Math.round(change);
+        }
+        
+        function drawWaves() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            // Dibujar el fondo con gradiente
+            const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
+            gradient.addColorStop(0, '#1a1a2e');
+            gradient.addColorStop(1, '#16213e');
+            ctx.fillStyle = gradient;
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            // Dibujar las ondas sonoras
+            drawSoundWaves();
+            
+            // Dibujar la fuente de sonido
+            drawSource();
+            
+            // Dibujar observadores
+            drawObservers();
+            
+            // Dibujar información
+            drawInfo();
+        }
+        
+        function drawSoundWaves() {
+            const centerY = canvas.height / 2;
+            const waveSpeed = soundSpeed / 10; // Escala para visualización
+            
+            ctx.strokeStyle = 'rgba(100, 200, 255, 0.6)';
+            ctx.lineWidth = 2;
+            
+            // Generar múltiples ondas desde la fuente
+            for (let waveIndex = 0; waveIndex < 8; waveIndex++) {
+                const waveTime = time - waveIndex * 20;
+                if (waveTime < 0) continue;
+                
+                const waveSourcePos = sourcePosition - sourceDirection * sourceSpeed * waveTime / 10;
+                
+                ctx.beginPath();
+                
+                for (let x = 0; x < canvas.width; x++) {
+                    const distance = Math.abs(x - waveSourcePos);
+                    const adjustedDistance = distance - waveSpeed * waveTime;
+                    
+                    if (adjustedDistance < 0) continue;
+                    
+                    // Calcular la frecuencia ajustada por efecto Doppler
+                    let adjustedFreq = frequency;
+                    if (x > sourcePosition) {
+                        // Observador a la derecha (fuente alejándose)
+                        adjustedFreq = frequency * soundSpeed / (soundSpeed + sourceSpeed);
+                    } else {
+                        // Observador a la izquierda (fuente acercándose)
+                        adjustedFreq = frequency * soundSpeed / (soundSpeed - sourceSpeed);
+                    }
+                    
+                    const wavelength = soundSpeed / adjustedFreq * 5; // Escala para visualización
+                    const phase = (adjustedDistance / wavelength) * 2 * Math.PI;
+                    const y = centerY + amplitude * Math.sin(phase) * Math.exp(-adjustedDistance / 200);
+                    
+                    if (x === 0) {
+                        ctx.moveTo(x, y);
+                    } else {
+                        ctx.lineTo(x, y);
+                    }
+                }
+                
+                ctx.stroke();
+            }
+        }
+        
+        function drawSource() {
+            // Dibujar la fuente de sonido como un círculo pulsante
+            const centerY = canvas.height / 2;
+            const pulseSize = 15 + 5 * Math.sin(time / 5);
+            
+            // Sombra
+            ctx.beginPath();
+            ctx.arc(sourcePosition + 2, centerY + 2, pulseSize, 0, 2 * Math.PI);
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
+            ctx.fill();
+            
+            // Fuente principal
+            ctx.beginPath();
+            ctx.arc(sourcePosition, centerY, pulseSize, 0, 2 * Math.PI);
+            ctx.fillStyle = '#ff6b6b';
+            ctx.fill();
+            
+            // Borde brillante
+            ctx.beginPath();
+            ctx.arc(sourcePosition, centerY, pulseSize, 0, 2 * Math.PI);
+            ctx.strokeStyle = '#ff9999';
+            ctx.lineWidth = 3;
+            ctx.stroke();
+            
+            // Flecha de dirección
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 20px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText(sourceDirection > 0 ? '→' : '←', sourcePosition, centerY - 25);
+        }
+        
+        function drawObservers() {
+            const centerY = canvas.height / 2;
+            
+            // Observador izquierdo (fuente acercándose)
+            ctx.fillStyle = '#4CAF50';
+            ctx.beginPath();
+            ctx.arc(50, centerY, 12, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.fillStyle = 'white';
+            ctx.font = 'bold 16px Arial';
+            ctx.textAlign = 'center';
+            ctx.fillText('👂', 50, centerY + 5);
+            
+            // Observador derecho (fuente alejándose)
+            ctx.fillStyle = '#2196F3';
+            ctx.beginPath();
+            ctx.arc(canvas.width - 50, centerY, 12, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.fillStyle = 'white';
+            ctx.fillText('👂', canvas.width - 50, centerY + 5);
+        }
+        
+        function drawInfo() {
+            // Etiquetas para los observadores
+            ctx.fillStyle = 'rgba(255, 255, 255, 0.9)';
+            ctx.font = '14px Arial';
+            ctx.textAlign = 'center';
+            
+            const approachingFreq = Math.round(frequency * soundSpeed / (soundSpeed - sourceSpeed));
+            const recedingFreq = Math.round(frequency * soundSpeed / (soundSpeed + sourceSpeed));
+            
+            ctx.fillText('Acercándose', 50, canvas.height - 60);
+            ctx.fillText(approachingFreq + ' Hz', 50, canvas.height - 40);
+            
+            ctx.fillText('Alejándose', canvas.width - 50, canvas.height - 60);
+            ctx.fillText(recedingFreq + ' Hz', canvas.width - 50, canvas.height - 40);
+            
+            // Información de la fuente
+            ctx.textAlign = 'left';
+            ctx.fillText('Frecuencia original: ' + frequency + ' Hz', 10, 30);
+            ctx.fillText('Velocidad fuente: ' + sourceSpeed + ' m/s', 10, 50);
+            ctx.fillText('Velocidad sonido: ' + soundSpeed + ' m/s', 10, 70);
+        }
+        
+        function animate() {
+            if (!isRunning) return;
+            
+            time += 0.5;
+            
+            // Mover la fuente
+            sourcePosition += sourceDirection * sourceSpeed / 10;
+            
+            // Cambiar dirección en los bordes
+            if (sourcePosition >= canvas.width - 50 || sourcePosition <= 50) {
+                sourceDirection *= -1;
+            }
+            
+            drawWaves();
+            animationId = requestAnimationFrame(animate);
+        }
+        
+        function startSimulation() {
+            isRunning = true;
+            animate();
+        }
+        
+        function stopSimulation() {
+            isRunning = false;
+            if (animationId) {
+                cancelAnimationFrame(animationId);
+            }
+        }
+        
+        function resetSimulation() {
+            stopSimulation();
+            time = 0;
+            sourcePosition = canvas.width / 2;
+            sourceDirection = 1;
+            drawWaves();
+        }
+        
+        // Inicialización
+        updateFrequencyCalculations();
+        drawWaves();
+    </script>
+</body>
+</html>
