@@ -2,46 +2,244 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Experimento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experimento - Efecto Doppler</title>
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <header>
-        <h1>Experimento</h1>
-        <button id="toggle-dark" class="modo-toggle">🌙 Modo Oscuro</button>
-    </header>
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="que-es.html">¿Qué es?</a>
-        <a href="ejemplos.html">Ejemplos</a>
-        <a href="formula.html">Fórmula</a>
-        <a href="aplicaciones.html">Aplicaciones</a>
-    </nav>
-    <div class="contenido">
-        <p>Aquí le mostraremos un pequeño video explicativo hecho por nosotros en el programa de FL Studio, en el cual explicamos cómo funciona el efecto Doppler:</p>
-        <div class="video">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/0hBHkn_Zi4U?si=DUwrFV-X3iCnGeK6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
+    <!-- Fondo de partículas animadas -->
+    <div class="particles-bg"></div>
+    
+    <!-- Ondas de sonido animadas -->
+    <div class="sound-waves">
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
     </div>
-    <footer>
-        Página educativa sobre el Efecto Doppler | Grupo 8
+
+    <header class="hero-header">
+        <div class="header-content">
+            <div class="doppler-animation">
+                <div class="source">🎵</div>
+                <div class="observer">🎧</div>
+                <div class="wave-animation">
+                    <div class="doppler-wave"></div>
+                    <div class="doppler-wave"></div>
+                    <div class="doppler-wave"></div>
+                </div>
+            </div>
+            <h1 class="title-animated">
+                <span class="letter">E</span>
+                <span class="letter">x</span>
+                <span class="letter">p</span>
+                <span class="letter">e</span>
+                <span class="letter">r</span>
+                <span class="letter">i</span>
+                <span class="letter">m</span>
+                <span class="letter">e</span>
+                <span class="letter">n</span>
+                <span class="letter">t</span>
+                <span class="letter">o</span>
+            </h1>
+            <p class="subtitle-glow">"Demostrando el Efecto Doppler a través del sonido y la música."</p>
+            <button id="toggle-dark" class="modo-toggle">
+                <span class="toggle-icon">🌙</span>
+                <span class="toggle-text">Modo Oscuro</span>
+            </button>
+        </div>
+        <div class="header-decoration">
+            <div class="frequency-bars">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-modern">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item" data-text="Inicio">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Inicio</span>
+            </a>
+            <a href="que-es.html" class="nav-item" data-text="¿Qué es?">
+                <span class="nav-icon">❓</span>
+                <span class="nav-label">¿Qué es?</span>
+            </a>
+            <a href="ejemplos.html" class="nav-item" data-text="Ejemplos">
+                <span class="nav-icon">🌟</span>
+                <span class="nav-label">Ejemplos</span>
+            </a>
+            <a href="formula.html" class="nav-item" data-text="Fórmula">
+                <span class="nav-icon">📐</span>
+                <span class="nav-label">Fórmula</span>
+            </a>
+            <a href="aplicaciones.html" class="nav-item" data-text="Aplicaciones">
+                <span class="nav-icon">🔬</span>
+                <span class="nav-label">Aplicaciones</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="contenido">
+        <section class="welcome-section">
+            <div class="content-card card-animate">
+                <h2 class="section-title">
+                    <span class="title-decoration">🎵</span>
+                    Experimento Práctico con FL Studio
+                </h2>
+                <p>Aquí le mostraremos un pequeño video explicativo hecho por nosotros en el programa de FL Studio, en el cual explicamos cómo funciona el efecto Doppler:</p>
+                
+                <div class="video" style="margin-top: var(--space-xl);">
+                    <div class="video-container" style="position: relative; max-width: 800px; margin: 0 auto; border-radius: var(--radius-lg); overflow: hidden; box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15); transition: all var(--transition-normal);">
+                        <iframe width="100%" height="450" src="https://www.youtube.com/embed/0hBHkn_Zi4U?si=DUwrFV-X3iCnGeK6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen style="border-radius: var(--radius-lg);"></iframe>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card card-animate fl-studio-section" style="animation-delay: 0.2s;">
+                <div class="studio-content">
+                    <div class="studio-text">
+                        <h3 class="studio-title">
+                            <span class="music-note">🎼</span>
+                            Explicación del Experimento
+                        </h3>
+                        <p>En este video experimental, utilizamos FL Studio para crear una demostración auditiva del efecto Doppler. A través de la manipulación de frecuencias y efectos de sonido, recreamos la experiencia de cómo cambia el tono de una fuente sonora en movimiento.</p>
+                        <p style="margin-top: var(--space-md); opacity: 0.9;">El experimento nos permite visualizar y escuchar de manera práctica los conceptos teóricos del efecto Doppler en un entorno controlado y educativo.</p>
+                    </div>
+                    <div class="studio-image">
+                        <div class="image-container">
+                            <img src="FLSTUDIO.png" alt="FL Studio" class="fl-studio-img"/>
+                            <div class="image-overlay">
+                                <div class="play-button">🎵</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-modern">
+        <div class="footer-content">
+            <div class="footer-wave"></div>
+            <p>Página educativa sobre el Efecto Doppler | Creado por Grupo 8 - 2025</p>
+            <div class="footer-icons">
+                <span class="footer-icon">🔬</span>
+                <span class="footer-icon">📊</span>
+                <span class="footer-icon">🎵</span>
+            </div>
+        </div>
     </footer>
 
     <script>
+        // Toggle modo oscuro mejorado
         const btn = document.getElementById('toggle-dark');
         const body = document.body;
+        const toggleIcon = btn.querySelector('.toggle-icon');
+        const toggleText = btn.querySelector('.toggle-text');
 
-        if (localStorage.getItem('modo-oscuro') === 'true') {
-            body.classList.add('modo-oscuro');
-            btn.textContent = '☀️ Modo Claro';
+        // Variable para modo oscuro (sin localStorage en artifacts)
+        let darkMode = false;
+
+        function updateToggle() {
+            if (darkMode) {
+                body.classList.add('modo-oscuro');
+                toggleIcon.textContent = '☀️';
+                toggleText.textContent = 'Modo Claro';
+            } else {
+                body.classList.remove('modo-oscuro');
+                toggleIcon.textContent = '🌙';
+                toggleText.textContent = 'Modo Oscuro';
+            }
         }
 
         btn.addEventListener('click', () => {
-            body.classList.toggle('modo-oscuro');
-            const darkMode = body.classList.contains('modo-oscuro');
-            btn.textContent = darkMode ? '☀️ Modo Claro' : '🌙 Modo Oscuro';
-            localStorage.setItem('modo-oscuro', darkMode);
+            darkMode = !darkMode;
+            updateToggle();
+            
+            // Efecto de transición suave
+            body.style.transition = 'all 0.3s ease';
+            setTimeout(() => {
+                body.style.transition = '';
+            }, 300);
         });
+
+        // Animación de las letras del título
+        window.addEventListener('load', () => {
+            const letters = document.querySelectorAll('.letter');
+            letters.forEach((letter, index) => {
+                letter.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Animación de las ondas Doppler
+        function animateDopplerWaves() {
+            const waves = document.querySelectorAll('.doppler-wave');
+            waves.forEach((wave, index) => {
+                wave.style.animationDelay = `${index * 0.3}s`;
+            });
+        }
+
+        // Inicializar animaciones
+        window.addEventListener('load', () => {
+            animateDopplerWaves();
+            
+            // Animar barras de frecuencia
+            const bars = document.querySelectorAll('.frequency-bars .bar');
+            bars.forEach((bar, index) => {
+                bar.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Efecto parallax suave en scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.particles-bg');
+            const soundWaves = document.querySelector('.sound-waves');
+            
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+            if (soundWaves) {
+                soundWaves.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Intersección observer para animaciones de entrada
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos animables
+        document.querySelectorAll('.card-animate').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Efecto hover mejorado para el contenedor del video
+        const videoContainer = document.querySelector('.video-container');
+        if (videoContainer) {
+            videoContainer.addEventListener('mouseenter', () => {
+                videoContainer.style.transform = 'translateY(-5px) scale(1.02)';
+                videoContainer.style.boxShadow = '0 30px 80px rgba(0, 0, 0, 0.2)';
+            });
+            
+            videoContainer.addEventListener('mouseleave', () => {
+                videoContainer.style.transform = 'translateY(0) scale(1)';
+                videoContainer.style.boxShadow = '0 20px 60px rgba(0, 0, 0, 0.15)';
+            });
+        }
     </script>
 </body>
 </html>
