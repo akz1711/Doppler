@@ -2,46 +2,188 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Experimento</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experimento FL Studio - Efecto Doppler</title>
     <link rel="stylesheet" href="estilo.css">
 </head>
 <body>
-    <header>
-        <h1>Experimento</h1>
-        <button id="toggle-dark" class="modo-toggle">🌙 Modo Oscuro</button>
-    </header>
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="que-es.html">¿Qué es?</a>
-        <a href="ejemplos.html">Ejemplos</a>
-        <a href="formula.html">Fórmula</a>
-        <a href="aplicaciones.html">Aplicaciones</a>
-    </nav>
-    <div class="contenido">
-        <p>Aquí le mostraremos un pequeño video explicativo hecho por nosotros en el programa de FL Studio, en el cual explicamos cómo funciona el efecto Doppler:</p>
-        <div class="video">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/0hBHkn_Zi4U?si=DUwrFV-X3iCnGeK6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        </div>
+    <!-- Fondo de partículas animadas -->
+    <div class="particles-bg"></div>
+    
+    <!-- Ondas de sonido animadas -->
+    <div class="sound-waves">
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
     </div>
-    <footer>
-        Página educativa sobre el Efecto Doppler | Grupo 8
-    </footer>
 
-    <script>
-        const btn = document.getElementById('toggle-dark');
-        const body = document.body;
+    <header class="hero-header">
+        <div class="header-content">
+            <div class="doppler-animation">
+                <div class="source">🎵</div>
+                <div class="observer">🎧</div>
+                <div class="wave-animation">
+                    <div class="doppler-wave"></div>
+                    <div class="doppler-wave"></div>
+                    <div class="doppler-wave"></div>
+                </div>
+            </div>
+            <h1 class="title-animated">
+                <span class="letter">E</span>
+                <span class="letter">x</span>
+                <span class="letter">p</span>
+                <span class="letter">e</span>
+                <span class="letter">r</span>
+                <span class="letter">i</span>
+                <span class="letter">m</span>
+                <span class="letter">e</span>
+                <span class="letter">n</span>
+                <span class="letter">t</span>
+                <span class="letter">o</span>
+            </h1>
+            <p class="subtitle-glow">Demostración práctica del Efecto Doppler usando FL Studio</p>
+            <button id="toggle-dark" class="modo-toggle">
+                <span class="toggle-icon">🌙</span>
+                <span class="toggle-text">Modo Oscuro</span>
+            </button>
+        </div>
+        <div class="header-decoration">
+            <div class="frequency-bars">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
 
-        if (localStorage.getItem('modo-oscuro') === 'true') {
-            body.classList.add('modo-oscuro');
-            btn.textContent = '☀️ Modo Claro';
-        }
+    <nav class="nav-modern">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Inicio</span>
+            </a>
+            <a href="que-es.html" class="nav-item">
+                <span class="nav-icon">❓</span>
+                <span class="nav-label">¿Qué es?</span>
+            </a>
+            <a href="ejemplos.html" class="nav-item">
+                <span class="nav-icon">🌟</span>
+                <span class="nav-label">Ejemplos</span>
+            </a>
+            <a href="formula.html" class="nav-item">
+                <span class="nav-icon">📐</span>
+                <span class="nav-label">Fórmula</span>
+            </a>
+            <a href="aplicaciones.html" class="nav-item">
+                <span class="nav-icon">🔬</span>
+                <span class="nav-label">Aplicaciones</span>
+            </a>
+        </div>
+    </nav>
 
-        btn.addEventListener('click', () => {
-            body.classList.toggle('modo-oscuro');
-            const darkMode = body.classList.contains('modo-oscuro');
-            btn.textContent = darkMode ? '☀️ Modo Claro' : '🌙 Modo Oscuro';
-            localStorage.setItem('modo-oscuro', darkMode);
-        });
-    </script>
-</body>
-</html>
+    <main class="contenido">
+        <section class="welcome-section">
+            <!-- Introducción al experimento -->
+            <div class="content-card card-animate">
+                <h2 class="section-title">
+                    <span class="title-decoration">🎵</span>
+                    Experimento: Efecto Doppler en FL Studio
+                </h2>
+                <p>En este experimento demostraremos el Efecto Doppler utilizando FL Studio, un software de producción musical que nos permite simular el comportamiento de las ondas sonoras cuando la fuente se mueve respecto al observador.</p>
+            </div>
+
+            <!-- Objetivos del experimento -->
+            <div class="content-card card-animate" style="animation-delay: 0.1s;">
+                <h3 class="section-title">
+                    <span class="title-decoration">🎯</span>
+                    Objetivos del Experimento
+                </h3>
+                <div class="objectives-grid">
+                    <div class="objective-card">
+                        <div class="objective-icon">🔍</div>
+                        <h4>Observar el cambio de frecuencia</h4>
+                        <p>Demostrar cómo cambia la frecuencia percibida cuando una fuente sonora se acerca o aleja</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-icon">📊</div>
+                        <h4>Medir las diferencias</h4>
+                        <p>Cuantificar los cambios de tono usando herramientas de análisis espectral</p>
+                    </div>
+                    <div class="objective-card">
+                        <div class="objective-icon">🎧</div>
+                        <h4>Experiencia auditiva</h4>
+                        <p>Permitir escuchar claramente el efecto en un entorno controlado</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Materiales necesarios -->
+            <div class="content-card card-animate" style="animation-delay: 0.2s;">
+                <h3 class="section-title">
+                    <span class="title-decoration">🛠️</span>
+                    Materiales Necesarios
+                </h3>
+                <div class="materials-list">
+                    <div class="material-item">
+                        <span class="material-icon">💻</span>
+                        <div class="material-info">
+                            <h4>FL Studio</h4>
+                            <p>Software de producción musical con capacidades de síntesis y efectos</p>
+                        </div>
+                    </div>
+                    <div class="material-item">
+                        <span class="material-icon">🎧</span>
+                        <div class="material-info">
+                            <h4>Audífonos o Altavoces</h4>
+                            <p>Para escuchar claramente los cambios de frecuencia</p>
+                        </div>
+                    </div>
+                    <div class="material-item">
+                        <span class="material-icon">🎛️</span>
+                        <div class="material-info">
+                            <h4>Plugin Doppler</h4>
+                            <p>Efecto específico para simular el movimiento de fuentes sonoras</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Procedimiento experimental -->
+            <div class="content-card card-animate" style="animation-delay: 0.3s;">
+                <h3 class="section-title">
+                    <span class="title-decoration">⚗️</span>
+                    Procedimiento Experimental
+                </h3>
+                <div class="procedure-steps">
+                    <div class="step-card">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h4>Configuración inicial</h4>
+                            <p>Abrimos FL Studio y creamos un nuevo proyecto. Seleccionamos un oscilador que genere una frecuencia constante (por ejemplo, 440 Hz - La central).</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h4>Aplicación del efecto Doppler</h4>
+                            <p>Insertamos el plugin de Doppler en la cadena de efectos del canal. Configuramos los parámetros de velocidad y distancia.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h4>Automatización del movimiento</h4>
+                            <p>Automatizamos el parámetro de posición para simular el movimiento de acercamiento y alejamiento de la fuente.</p>
+                        </div>
+                    </div>
+                    <div class="step-card">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h4>Grabación y análisis</h4>
+                            <p>Grabamos el resultado y utilizamos un analizador espectral para visualizar los cambios de frecuencia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
