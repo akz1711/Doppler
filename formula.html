@@ -2,96 +2,317 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fórmula del Efecto Doppler</title>
     <link rel="stylesheet" href="estilo.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <header>
-        <h1>Fórmula del Efecto Doppler</h1>
-        <button id="toggle-dark" class="modo-toggle">🌙 Modo Oscuro</button>
-    </header>
-    <nav>
-        <a href="index.html">Inicio</a>
-        <a href="que-es.html">¿Qué es?</a>
-        <a href="ejemplos.html">Ejemplos</a>
-        <a href="aplicaciones.html">Aplicaciones</a>
-        <a href="experimento.html">Experimento</a>
-    </nav>
-    <div class="contenido">
-        <p>La fórmula para calcular la frecuencia observada es:</p>
-        <div class="formula">
-            f′ = (f × (v ± v₀)) / (v ∓ vₛ)
-        </div>
-
-        <ul>
-            <li><strong>f′</strong>: frecuencia observada</li>
-            <li><strong>f</strong>: frecuencia emitida</li>
-            <li><strong>v</strong>: velocidad del medio (como el aire)</li>
-            <li><strong>v₀</strong>: velocidad del observador</li>
-            <li><strong>vₛ</strong>: velocidad de la fuente</li>
-        </ul>
-
-        <p><strong>¿Cómo elegir los signos?</strong></p>
-        <ul>
-            <li>Usa <strong>“+”</strong> si el observador se acerca a la fuente.</li>
-            <li>Usa <strong>“–”</strong> si el observador se aleja.</li>
-            <li>En el denominador, usa <strong>“–”</strong> si la fuente se acerca.</li>
-            <li>Usa <strong>“+”</strong> si la fuente se aleja.</li>
-        </ul>
-
-        <p><em>Este fenómeno es clave en aplicaciones como el radar, la astronomía y la medicina (ultrasonido Doppler).</em></p>
-
-        <h2>Calculadora del Efecto Doppler</h2>
-        <form id="dopplerForm" class="calculadora">
-            <label for="f">Frecuencia emitida (Hz):</label>
-            <input type="number" id="f" name="f" step="any" required>
-
-            <label for="v">Velocidad del medio (m/s):</label>
-            <input type="number" id="v" name="v" step="any" required value="343">
-
-            <label for="v0">Velocidad del observador (m/s):</label>
-            <input type="number" id="v0" name="v0" step="any" required>
-
-            <label for="vs">Velocidad de la fuente (m/s):</label>
-            <input type="number" id="vs" name="vs" step="any" required>
-
-            <label for="obsSign">Signo para el observador:</label>
-            <select id="obsSign" name="obsSign" required>
-                <option value="+">+</option>
-                <option value="-">-</option>
-            </select>
-
-            <label for="srcSign">Signo para la fuente:</label>
-            <select id="srcSign" name="srcSign" required>
-                <option value="-">-</option>
-                <option value="+">+</option>
-            </select>
-
-            <button type="submit">Calcular frecuencia observada</button>
-        </form>
-
-        <p><strong>Frecuencia observada (f′):</strong> <span id="result">--</span> Hz</p>
+    <!-- Fondo animado de partículas -->
+    <div class="particles-bg"></div>
+    
+    <!-- Ondas de sonido animadas -->
+    <div class="sound-waves">
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
     </div>
-    <footer>
-        Página educativa sobre el Efecto Doppler | Grupo 8
+
+    <!-- Header Hero Moderno -->
+    <header class="hero-header">
+        <div class="header-content">
+            <h1 class="title-animated" id="main-title">Fórmulas</h1>
+            <p class="subtitle-glow">Comprende la matemática detrás del fenómeno</p>
+            
+            <!-- Animación Doppler en header -->
+            <div class="doppler-animation">
+                <div class="source">🚗</div>
+                <div class="wave-animation">
+                    <div class="doppler-wave"></div>
+                </div>
+                <div class="observer">👤</div>
+            </div>
+            
+            <!-- Barras de frecuencia decorativas -->
+            <div class="header-decoration">
+                <div class="frequency-bars">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+            
+            <button id="toggle-dark" class="modo-toggle">
+                <span class="toggle-icon">🌙</span>
+                <span class="toggle-text">Modo Oscuro</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Navegación moderna -->
+    <nav class="nav-modern">
+        <div class="nav-container">
+            <a href="que-es.html" class="nav-item" data-text="¿Qué es?">
+                <span class="nav-icon">❓</span>
+                <span class="nav-label">¿Qué es?</span>
+            </a>
+            <a href="ejemplos.html" class="nav-item" data-text="Ejemplos">
+                <span class="nav-icon">🌟</span>
+                <span class="nav-label">Ejemplos</span>
+            </a>
+            <a href="formula.html" class="nav-item" data-text="Fórmula">
+                <span class="nav-icon">📐</span>
+                <span class="nav-label">Fórmula</span>
+            </a>
+            <a href="aplicaciones.html" class="nav-item" data-text="Aplicaciones">
+                <span class="nav-icon">🔬</span>
+                <span class="nav-label">Aplicaciones</span>
+            </a>
+            <a href="experimento.html" class="nav-item" data-text="Experimento">
+                <span class="nav-icon">🎵</span>
+                <span class="nav-label">Experimento</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <div class="contenido">
+        <div class="welcome-section">
+            <!-- Sección de la fórmula -->
+            <div class="content-card card-animate">
+                <div class="section-title">
+                    <span class="title-decoration">📐</span>
+                    La Fórmula Fundamental
+                </div>
+                
+                <p>La frecuencia observada se calcula mediante esta ecuación matemática que relaciona las velocidades del observador, la fuente y el medio:</p>
+                
+                <div class="formula">
+                    f′ = (f × (v ± v₀)) / (v ∓ vₛ)
+                </div>
+
+                <!-- Grid de variables -->
+                <div class="topics-grid">
+                    <div class="topic-card">
+                        <div class="topic-icon">🎯</div>
+                        <h4>f′ - Frecuencia Observada</h4>
+                        <p>Es la frecuencia que percibe el observador, diferente a la original debido al movimiento relativo.</p>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">📡</div>
+                        <h4>f - Frecuencia Emitida</h4>
+                        <p>La frecuencia original de la fuente sonora antes de cualquier efecto Doppler.</p>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">🌊</div>
+                        <h4>v - Velocidad del Medio</h4>
+                        <p>Velocidad de propagación de las ondas en el medio (aire: ~343 m/s a 20°C).</p>
+                    </div>
+                    <div class="topic-card">
+                        <div class="topic-icon">🏃</div>
+                        <h4>v₀, vₛ - Velocidades</h4>
+                        <p>Velocidades del observador (v₀) y de la fuente (vₛ) respecto al medio.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sección de signos -->
+            <div class="content-card card-animate">
+                <div class="section-title">
+                    <span class="title-decoration">➕</span>
+                    ¿Cómo Elegir los Signos?
+                </div>
+                
+                <div class="team-section">
+                    <div class="team-title">Para el Observador (numerador):</div>
+                    <ul class="team-list">
+                        <li class="team-member">
+                            <div class="member-icon">➕</div>
+                            <div>
+                                <strong>Signo positivo (+):</strong> Cuando el observador se <em>acerca</em> a la fuente
+                            </div>
+                        </li>
+                        <li class="team-member">
+                            <div class="member-icon">➖</div>
+                            <div>
+                                <strong>Signo negativo (–):</strong> Cuando el observador se <em>aleja</em> de la fuente
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="team-section">
+                    <div class="team-title">Para la Fuente (denominador):</div>
+                    <ul class="team-list">
+                        <li class="team-member">
+                            <div class="member-icon">➖</div>
+                            <div>
+                                <strong>Signo negativo (–):</strong> Cuando la fuente se <em>acerca</em> al observador
+                            </div>
+                        </li>
+                        <li class="team-member">
+                            <div class="member-icon">➕</div>
+                            <div>
+                                <strong>Signo positivo (+):</strong> Cuando la fuente se <em>aleja</em> del observador
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Calculadora del Efecto Doppler -->
+            <div class="content-card card-animate">
+                <div class="section-title">
+                    <span class="title-decoration">🧮</span>
+                    Calculadora del Efecto Doppler
+                </div>
+                
+                <form id="dopplerForm" class="calculadora">
+                    <label for="f">
+                        <i class="fas fa-broadcast-tower"></i> Frecuencia emitida (Hz):
+                    </label>
+                    <input type="number" id="f" name="f" step="any" required placeholder="Ej: 1000">
+
+                    <label for="v">
+                        <i class="fas fa-wind"></i> Velocidad del medio (m/s):
+                    </label>
+                    <input type="number" id="v" name="v" step="any" required value="343" placeholder="343 (aire a 20°C)">
+
+                    <label for="v0">
+                        <i class="fas fa-walking"></i> Velocidad del observador (m/s):
+                    </label>
+                    <input type="number" id="v0" name="v0" step="any" required placeholder="Ej: 10">
+
+                    <label for="vs">
+                        <i class="fas fa-car"></i> Velocidad de la fuente (m/s):
+                    </label>
+                    <input type="number" id="vs" name="vs" step="any" required placeholder="Ej: 30">
+
+                    <label for="obsSign">
+                        <i class="fas fa-eye"></i> Movimiento del observador:
+                    </label>
+                    <select id="obsSign" name="obsSign" required>
+                        <option value="+">Se acerca a la fuente (+)</option>
+                        <option value="-">Se aleja de la fuente (-)</option>
+                    </select>
+
+                    <label for="srcSign">
+                        <i class="fas fa-volume-up"></i> Movimiento de la fuente:
+                    </label>
+                    <select id="srcSign" name="srcSign" required>
+                        <option value="-">Se acerca al observador (-)</option>
+                        <option value="+">Se aleja del observador (+)</option>
+                    </select>
+
+                    <button type="submit">
+                        <i class="fas fa-calculator"></i>
+                        Calcular Frecuencia Observada
+                    </button>
+                </form>
+
+                <div id="result">--</div>
+            </div>
+
+            <!-- Sección de aplicaciones -->
+            <div class="content-card fl-studio-section card-animate">
+                <div class="studio-content">
+                    <div class="studio-text">
+                        <h3 class="studio-title">
+                            <span class="music-note">🔬</span>
+                            Aplicaciones del Efecto Doppler
+                        </h3>
+                        <p>Este fenómeno es fundamental en múltiples campos científicos y tecnológicos, desde el radar y la astronomía hasta la medicina moderna con ultrasonido Doppler.</p>
+                        <p>La comprensión de esta fórmula permite desarrollar tecnologías que van desde la medición de velocidades hasta el diagnóstico médico no invasivo.</p>
+                    </div>
+                    <div class="image-container">
+                        <div class="topic-icon" style="font-size: 4rem; color: white;">🌌</div>
+                        <div class="image-overlay">
+                            <div class="play-button">🚁</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer moderno -->
+    <footer class="footer-modern">
+        <div class="footer-wave"></div>
+        <div class="footer-content">
+            <p>Página educativa sobre el Efecto Doppler | Grupo 8</p>
+            <div class="footer-icons">
+                <span class="footer-icon">📐</span>
+                <span class="footer-icon">🔊</span>
+                <span class="footer-icon">🌊</span>
+            </div>
+        </div>
     </footer>
 
     <script>
+        // Animación del título letra por letra
+        function animateTitle() {
+            const title = document.getElementById('main-title');
+            const text = title.textContent;
+            title.innerHTML = '';
+            
+            [...text].forEach((char, i) => {
+                const span = document.createElement('span');
+                span.textContent = char === ' ' ? '\u00A0' : char;
+                span.className = char === ' ' ? 'space' : 'letter';
+                span.style.animationDelay = `${i * 0.1}s`;
+                title.appendChild(span);
+            });
+        }
+
+        // Animación de entrada de elementos
+        function animateElements() {
+            const cards = document.querySelectorAll('.content-card');
+            cards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('animate-in');
+                }, index * 200);
+            });
+
+            const teamMembers = document.querySelectorAll('.team-member');
+            teamMembers.forEach((member, index) => {
+                setTimeout(() => {
+                    member.style.opacity = '1';
+                    member.style.transform = 'translateX(0)';
+                }, (index * 100) + 500);
+            });
+
+            const topicCards = document.querySelectorAll('.topic-card');
+            topicCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, (index * 150) + 800);
+            });
+        }
+
+        // Modo oscuro
         const btn = document.getElementById('toggle-dark');
         const body = document.body;
+        const toggleIcon = btn.querySelector('.toggle-icon');
+        const toggleText = btn.querySelector('.toggle-text');
 
-        if (localStorage.getItem('modo-oscuro') === 'true') {
-            body.classList.add('modo-oscuro');
-            btn.textContent = '☀️ Modo Claro';
+        // Verificar modo guardado (sin localStorage)
+        function initializeDarkMode() {
+            // Por defecto modo claro
+            toggleIcon.textContent = '🌙';
+            toggleText.textContent = 'Modo Oscuro';
         }
 
         btn.addEventListener('click', () => {
             body.classList.toggle('modo-oscuro');
             const darkMode = body.classList.contains('modo-oscuro');
-            btn.textContent = darkMode ? '☀️ Modo Claro' : '🌙 Modo Oscuro';
-            localStorage.setItem('modo-oscuro', darkMode);
+            toggleIcon.textContent = darkMode ? '☀️' : '🌙';
+            toggleText.textContent = darkMode ? 'Modo Claro' : 'Modo Oscuro';
         });
 
+        // Calculadora Doppler
         document.getElementById('dopplerForm').addEventListener('submit', function(event) {
             event.preventDefault();
 
@@ -108,14 +329,39 @@
             const numerator = v + (obsFactor * v0);
             const denominator = v - (srcFactor * vs);
 
+            const resultElement = document.getElementById('result');
+
             if (denominator === 0) {
-                document.getElementById('result').textContent = 'Error: División por cero';
+                resultElement.textContent = 'Error: División por cero';
+                resultElement.style.color = '#ff6b35';
                 return;
             }
 
             const fPrime = f * (numerator / denominator);
+            resultElement.textContent = `${fPrime.toFixed(2)} Hz`;
+            resultElement.style.color = 'var(--primary-dark)';
+            
+            // Animación de resultado
+            resultElement.style.transform = 'scale(1.1)';
+            setTimeout(() => {
+                resultElement.style.transform = 'scale(1)';
+            }, 200);
+        });
 
-            document.getElementById('result').textContent = fPrime.toFixed(2);
+        // Inicializar animaciones cuando carga la página
+        window.addEventListener('load', () => {
+            animateTitle();
+            setTimeout(animateElements, 500);
+            initializeDarkMode();
+        });
+
+        // Efecto parallax suave en scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const particles = document.querySelector('.particles-bg');
+            if (particles) {
+                particles.style.transform = `translateY(${scrolled * 0.1}px)`;
+            }
         });
     </script>
 </body>
