@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -31,9 +30,9 @@
             height: 100vh;
             pointer-events: none;
             z-index: -2;
-            background: radial-gradient(circle at 20% 20%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 80% 80%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-                        radial-gradient(circle at 40% 40%, rgba(120, 219, 255, 0.2) 0%, transparent 50%);
+            background: radial-gradient(circle at 20% 20%, rgba(102, 126, 234, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 80%, rgba(118, 75, 162, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 40% 40%, rgba(255, 107, 107, 0.2) 0%, transparent 50%);
             animation: particleFloat 20s ease-in-out infinite alternate;
         }
 
@@ -108,13 +107,13 @@
             margin-bottom: 40px;
             font-size: 3rem;
             font-weight: 700;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #f9ca24);
+            background: linear-gradient(45deg, #8d3b3b, #2d7772, #1d4e59, #8e7415);
             background-size: 400% 400%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
             animation: gradientShift 3s ease-in-out infinite;
-            text-shadow: 0 0 30px rgba(255, 255, 255, 0.5);
+            text-shadow: 0 0 30px rgba(18, 8, 159, 0.5);
             position: relative;
         }
 
@@ -161,7 +160,7 @@
         #canvas {
             border: 3px solid rgba(255, 255, 255, 0.2);
             border-radius: 15px;
-            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
         }
 
@@ -197,7 +196,7 @@
             flex: 1;
             height: 10px;
             border-radius: 10px;
-            background: linear-gradient(to right, #4CAF50, #45a049);
+            background: linear-gradient(to right, #4ecdc4, #45b7d1);
             outline: none;
             -webkit-appearance: none;
             box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
@@ -209,7 +208,7 @@
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            background: linear-gradient(45deg, #4CAF50, #66bb6a);
+            background: linear-gradient(45deg, #4ecdc4, #45b7d1);
             cursor: pointer;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             border: 2px solid white;
@@ -225,7 +224,7 @@
             width: 24px;
             height: 24px;
             border-radius: 50%;
-            background: linear-gradient(45deg, #4CAF50, #66bb6a);
+            background: linear-gradient(45deg, #4ecdc4, #45b7d1);
             cursor: pointer;
             border: 2px solid white;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
@@ -279,36 +278,36 @@
         }
 
         .start-btn {
-            background: linear-gradient(45deg, #4CAF50, #66bb6a);
+            background: linear-gradient(45deg, #4ecdc4, #45b7d1);
             color: white;
         }
 
         .start-btn:hover {
-            background: linear-gradient(45deg, #45a049, #5cb85c);
+            background: linear-gradient(45deg, #3bb8b3, #3da5c7);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(76, 175, 80, 0.4);
+            box-shadow: 0 8px 25px rgba(78, 205, 196, 0.4);
         }
 
         .stop-btn {
-            background: linear-gradient(45deg, #f44336, #e57373);
+            background: linear-gradient(45deg, #ff6b6b, #ff5722);
             color: white;
         }
 
         .stop-btn:hover {
-            background: linear-gradient(45deg, #da190b, #d32f2f);
+            background: linear-gradient(45deg, #ff5252, #e64a19);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(244, 67, 54, 0.4);
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
         }
 
         .reset-btn {
-            background: linear-gradient(45deg, #ff9800, #ffb74d);
+            background: linear-gradient(45deg, #f9ca24, #f39c12);
             color: white;
         }
 
         .reset-btn:hover {
-            background: linear-gradient(45deg, #e68900, #ff8f00);
+            background: linear-gradient(45deg, #f1c40f, #e67e22);
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 152, 0, 0.4);
+            box-shadow: 0 8px 25px rgba(249, 202, 36, 0.4);
         }
 
         .info-panel {
@@ -338,7 +337,7 @@
             left: 0;
             right: 0;
             height: 3px;
-            background: linear-gradient(90deg, #4CAF50, #2196F3, #ff9800);
+            background: linear-gradient(90deg, #4ecdc4, #45b7d1, #f9ca24);
             border-radius: 20px 20px 0 0;
         }
 
@@ -349,7 +348,7 @@
 
         .info-card h3 {
             margin-bottom: 15px;
-            color: #4CAF50;
+            color: #482566;
             font-size: 1.2rem;
             font-weight: 600;
         }
@@ -358,7 +357,7 @@
             font-size: 2.5rem;
             font-weight: bold;
             margin-bottom: 8px;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            background: linear-gradient(45deg, #672b2b, #235c58);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -437,7 +436,7 @@
                 <div class="control-group">
                     <label>Frecuencia Original (Hz)</label>
                     <div class="slider-container">
-                        <input type="range" id="frequency" min="100" max="1000" value="440" step="10">
+                        <input type="range" id="frequency" min="20" max="20000" value="440" step="10">
                         <div class="value-display" id="frequencyValue">440 Hz</div>
                     </div>
                 </div>
@@ -453,7 +452,7 @@
                 <div class="control-group">
                     <label>Velocidad del Sonido (m/s)</label>
                     <div class="slider-container">
-                        <input type="range" id="soundSpeed" min="300" max="400" value="343" step="1">
+                        <input type="range" id="soundSpeed" min="299" max="360" value="343" step="1">
                         <div class="value-display" id="soundSpeedValue">343 m/s</div>
                     </div>
                 </div>
@@ -567,10 +566,10 @@
         function drawWaves() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             
-            // Dibujar el fondo con gradiente
+            // Dibujar el fondo con gradiente del index
             const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
-            gradient.addColorStop(0, '#1a1a2e');
-            gradient.addColorStop(1, '#16213e');
+            gradient.addColorStop(0, '#667eea');
+            gradient.addColorStop(1, '#764ba2');
             ctx.fillStyle = gradient;
             ctx.fillRect(0, 0, canvas.width, canvas.height);
             
@@ -591,7 +590,7 @@
             const centerY = canvas.height / 2;
             const waveSpeed = soundSpeed / 10; // Escala para visualización
             
-            ctx.strokeStyle = 'rgba(100, 200, 255, 0.6)';
+            ctx.strokeStyle = 'rgba(78, 205, 196, 0.8)';
             ctx.lineWidth = 2;
             
             // Generar múltiples ondas desde la fuente
@@ -645,7 +644,7 @@
             ctx.fillStyle = 'rgba(0, 0, 0, 0.3)';
             ctx.fill();
             
-            // Fuente principal
+            // Fuente principal con color del index
             ctx.beginPath();
             ctx.arc(sourcePosition, centerY, pulseSize, 0, 2 * Math.PI);
             ctx.fillStyle = '#ff6b6b';
@@ -654,7 +653,7 @@
             // Borde brillante
             ctx.beginPath();
             ctx.arc(sourcePosition, centerY, pulseSize, 0, 2 * Math.PI);
-            ctx.strokeStyle = '#ff9999';
+            ctx.strokeStyle = '#4ecdc4';
             ctx.lineWidth = 3;
             ctx.stroke();
             
@@ -668,8 +667,8 @@
         function drawObservers() {
             const centerY = canvas.height / 2;
             
-            // Observador izquierdo (fuente acercándose)
-            ctx.fillStyle = '#4CAF50';
+            // Observador izquierdo (fuente acercándose) - color del index
+            ctx.fillStyle = '#4ecdc4';
             ctx.beginPath();
             ctx.arc(50, centerY, 12, 0, 2 * Math.PI);
             ctx.fill();
@@ -678,8 +677,8 @@
             ctx.textAlign = 'center';
             ctx.fillText('👂', 50, centerY + 5);
             
-            // Observador derecho (fuente alejándose)
-            ctx.fillStyle = '#2196F3';
+            // Observador derecho (fuente alejándose) - color del index
+            ctx.fillStyle = '#45b7d1';
             ctx.beginPath();
             ctx.arc(canvas.width - 50, centerY, 12, 0, 2 * Math.PI);
             ctx.fill();
