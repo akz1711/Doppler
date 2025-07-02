@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Aplicaciones del Efecto Doppler</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header>
+        <h1>Aplicaciones del Efecto Doppler</h1>
+        <button id="toggle-dark" class="modo-toggle">🌙 Modo Oscuro</button>
+    </header>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="que-es.html">¿Qué es?</a>
+        <a href="ejemplos.html">Ejemplos</a>
+        <a href="formula.html">Fórmula</a>
+        <a href="experimento.html">Experimento</a>
+    </nav>
+    <div class="contenido">
+       <p>El efecto Doppler no solo es un concepto físico interesante, sino que también tiene numerosas aplicaciones prácticas en diferentes campos de la ciencia y la tecnología. A continuación, te presentamos algunas de las más importantes:</p>
+        <ul>
+            <li><strong>Medicina (Ecografía Doppler):</strong> Se usa para medir el flujo de la sangre en venas y arterias, ayudando a detectar coágulos, problemas cardíacos y circulación anormal.</li>
+            <li><strong>Astronomía:</strong> Permite saber si una estrella o galaxia se está acercando o alejando de nosotros, gracias al corrimiento al rojo o al azul en su espectro de luz.</li>
+            <li><strong>Meteorología:</strong> Los radares Doppler detectan la velocidad y dirección del viento, facilitando el pronóstico del clima y la localización de tormentas o huracanes.</li>
+            <li><strong>Control de tráfico:</strong> Los radares de velocidad funcionan midiendo el cambio de frecuencia del sonido o de ondas de radio para calcular la velocidad de los vehículos.</li>
+            <li><strong>Navegación satelital (GPS):</strong> Ayuda a mejorar la precisión del posicionamiento al medir los cambios de frecuencia entre el satélite y el receptor en movimiento.</li>
+        </ul>
+        <div style="text-align: center;">
+            <img src="efe.jpg" alt="Texto alternativo" style="width: 600px; height: auto;">
+        </div>
+    </div>
+    
+    <footer>
+        Página educativa sobre el Efecto Doppler | Grupo 8
+    </footer>
+
+    <script>
+        const btn = document.getElementById('toggle-dark');
+        const body = document.body;
+
+        if (localStorage.getItem('modo-oscuro') === 'true') {
+            body.classList.add('modo-oscuro');
+            btn.textContent = '☀️ Modo Claro';
+        }
+
+        btn.addEventListener('click', () => {
+            body.classList.toggle('modo-oscuro');
+            const darkMode = body.classList.contains('modo-oscuro');
+            btn.textContent = darkMode ? '☀️ Modo Claro' : '🌙 Modo Oscuro';
+            localStorage.setItem('modo-oscuro', darkMode);
+        });
+    </script>
+</body>
+</html>

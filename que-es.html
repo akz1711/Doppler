@@ -1,0 +1,759 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Qué es el Efecto Doppler? - Física Interactiva</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <!-- Fondo de partículas animadas -->
+    <div class="particles-bg"></div>
+    
+    <!-- Ondas de sonido animadas -->
+    <div class="sound-waves">
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+    </div>
+
+    <header class="hero-header">
+        <div class="header-content">
+            <div class="doppler-animation">
+                <div class="source">🔊</div>
+                <div class="observer">👂</div>
+                <div class="wave-animation">
+                    <div class="doppler-wave"></div>
+                    <div class="doppler-wave"></div>
+                    <div class="doppler-wave"></div>
+                </div>
+            </div>
+            <h1 class="title-animated">
+                <span class="letter">¿</span>
+                <span class="letter">Q</span>
+                <span class="letter">u</span>
+                <span class="letter">é</span>
+                <span class="space"> </span>
+                <span class="letter">e</span>
+                <span class="letter">s</span>
+                <span class="space"> </span>
+                <span class="letter">e</span>
+                <span class="letter">l</span>
+                <span class="space"> </span>
+                <span class="letter">E</span>
+                <span class="letter">f</span>
+                <span class="letter">e</span>
+                <span class="letter">c</span>
+                <span class="letter">t</span>
+                <span class="letter">o</span>
+                <span class="space"> </span>
+                <span class="letter">D</span>
+                <span class="letter">o</span>
+                <span class="letter">p</span>
+                <span class="letter">p</span>
+                <span class="letter">l</span>
+                <span class="letter">e</span>
+                <span class="letter">r</span>
+                <span class="letter">?</span>
+            </h1>
+            <p class="subtitle-glow">Descubre el fascinante fenómeno que cambia la frecuencia de las ondas</p>
+            <button id="toggle-dark" class="modo-toggle">
+                <span class="toggle-icon">🌙</span>
+                <span class="toggle-text">Modo Oscuro</span>
+            </button>
+        </div>
+    </header>
+
+    <nav class="nav-modern">
+        <div class="nav-container">
+            <a href="index.html" class="nav-item" data-text="Inicio">
+                <span class="nav-icon">🏠</span>
+                <span class="nav-label">Inicio</span>
+            </a>
+            <a href="que-es.html" class="nav-item active" data-text="¿Qué es?">
+                <span class="nav-icon">❓</span>
+                <span class="nav-label">¿Qué es?</span>
+            </a>
+            <a href="ejemplos.html" class="nav-item" data-text="Ejemplos">
+                <span class="nav-icon">🌟</span>
+                <span class="nav-label">Ejemplos</span>
+            </a>
+            <a href="formula.html" class="nav-item" data-text="Fórmula">
+                <span class="nav-icon">📐</span>
+                <span class="nav-label">Fórmula</span>
+            </a>
+            <a href="aplicaciones.html" class="nav-item" data-text="Aplicaciones">
+                <span class="nav-icon">🔬</span>
+                <span class="nav-label">Aplicaciones</span>
+            </a>
+            <a href="experimento.html" class="nav-item" data-text="Experimento">
+                <span class="nav-icon">🎵</span>
+                <span class="nav-label">Experimento</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="contenido">
+        <section class="welcome-section">
+            <!-- Definición Principal -->
+            <div class="content-card card-animate">
+                <h2 class="section-title">
+                    <span class="title-decoration">🌊</span>
+                    Definición del Efecto Doppler
+                </h2>
+                
+                <div class="definition-content">
+                    <p class="definition-text">
+                        El <strong>Efecto Doppler</strong> es un fenómeno físico fundamental que ocurre cuando una onda 
+                        (ya sea sonora, electromagnética o de cualquier otro tipo) experimenta un <em>cambio en su frecuencia aparente</em> 
+                        debido al movimiento relativo entre la fuente que emite la onda y el observador que la recibe.
+                    </p>
+                    
+                    <div class="doppler-explanation">
+                        <div class="explanation-item">
+                            <div class="explanation-icon approaching">🔴</div>
+                            <div class="explanation-text">
+                                <h4>Fuente Acercándose</h4>
+                                <p>Las ondas se <strong>comprimen</strong>, produciendo una frecuencia más alta (sonido más agudo o luz más azulada)</p>
+                            </div>
+                        </div>
+                        
+                        <div class="explanation-item">
+                            <div class="explanation-icon receding">🔵</div>
+                            <div class="explanation-text">
+                                <h4>Fuente Alejándose</h4>
+                                <p>Las ondas se <strong>expanden</strong>, generando una frecuencia más baja (sonido más grave o luz más rojiza)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Historia y Descubrimiento -->
+            <div class="content-card card-animate" style="animation-delay: 0.2s;">
+                <h2 class="section-title">
+                    <span class="title-decoration">📚</span>
+                    Historia y Descubrimiento
+                </h2>
+                
+                <div class="history-content">
+                    <div class="historical-fact">
+                        <div class="fact-year">1842</div>
+                        <div class="fact-content">
+                            <h4>Christian Doppler</h4>
+                            <p>Este efecto fue descrito por primera vez por el físico austríaco <strong>Christian Doppler</strong> en 1842. 
+                            Desde entonces se ha convertido en una herramienta esencial para múltiples disciplinas científicas y tecnológicas.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="scientist-profile">
+                        <div class="profile-icon">👨‍🔬</div>
+                        <div class="profile-info">
+                            <h4>Christian Andreas Doppler</h4>
+                            <p><strong>Físico y matemático austríaco</strong> (1803-1853) conocido por formular el principio que lleva su nombre. 
+                            Su trabajo revolucionó nuestra comprensión de las ondas y el movimiento.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Visualización Gráfica -->
+            <div class="content-card card-animate" style="animation-delay: 0.4s;">
+                <h2 class="section-title">
+                    <span class="title-decoration">📊</span>
+                    Visualización del Fenómeno
+                </h2>
+                
+                <div class="visual-section">
+                    <div class="image-showcase">
+                        <div class="image-container-enhanced">
+                            <img src="doppler.webp" alt="Representación gráfica del Efecto Doppler" class="doppler-diagram"/>
+                            <div class="image-overlay-info">
+                                <div class="overlay-content">
+                                    <h4>🔍 Diagrama Interactivo</h4>
+                                    <p>Observa cómo las ondas cambian su frecuencia</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="diagram-explanation">
+                        <h4>Interpretación del Diagrama:</h4>
+                        <ul class="explanation-list">
+                            <li class="explanation-point">
+                                <span class="point-icon">🎯</span>
+                                <span>Las líneas circulares representan las <strong>ondas sonoras</strong> propagándose</span>
+                            </li>
+                            <li class="explanation-point">
+                                <span class="point-icon">🚗</span>
+                                <span>La fuente en movimiento <strong>comprime</strong> las ondas hacia adelante</span>
+                            </li>
+                            <li class="explanation-point">
+                                <span class="point-icon">📏</span>
+                                <span>Las ondas se <strong>estiran</strong> en la dirección opuesta al movimiento</span>
+                            </li>
+                            <li class="explanation-point">
+                                <span class="point-icon">👂</span>
+                                <span>Los observadores perciben <strong>diferentes frecuencias</strong> según su posición</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Características Clave -->
+            <div class="content-card card-animate characteristics-section" style="animation-delay: 0.6s;">
+                <h2 class="section-title">
+                    <span class="title-decoration">⚡</span>
+                    Características Clave del Efecto
+                </h2>
+                
+                <div class="characteristics-grid">
+                    <div class="characteristic-item">
+                        <div class="char-icon">🌊</div>
+                        <h4>Tipos de Ondas</h4>
+                        <p>Afecta a <strong>todas las ondas</strong>: sonoras, electromagnéticas, de agua, sísmicas</p>
+                    </div>
+                    
+                    <div class="characteristic-item">
+                        <div class="char-icon">🏃‍♂️</div>
+                        <h4>Movimiento Relativo</h4>
+                        <p>Solo depende del <strong>movimiento relativo</strong> entre fuente y observador</p>
+                    </div>
+                    
+                    <div class="characteristic-item">
+                        <div class="char-icon">📈</div>
+                        <h4>Cambio de Frecuencia</h4>
+                        <p>La frecuencia <strong>aumenta</strong> al acercarse y <strong>disminuye</strong> al alejarse</p>
+                    </div>
+                    
+                    <div class="characteristic-item">
+                        <div class="char-icon">🔄</div>
+                        <h4>Efecto Reversible</h4>
+                        <p>Funciona igual si se mueve la <strong>fuente</strong> o el <strong>observador</strong></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Llamada a la Acción -->
+            <div class="content-card card-animate cta-section" style="animation-delay: 0.8s;">
+                <div class="cta-content">
+                    <h3 class="cta-title">
+                        <span class="cta-icon">🚀</span>
+                        Explora Más sobre el Efecto Doppler
+                    </h3>
+                    <p class="cta-description">
+                        Ahora que conoces los fundamentos, <strong>descubre ejemplos fascinantes, fórmulas matemáticas y aplicaciones prácticas</strong> 
+                        del Efecto Doppler en nuestra vida cotidiana y en la ciencia moderna.
+                    </p>
+                    
+                    <div class="navigation-buttons">
+                        <a href="ejemplos.html" class="btn-navigate primary">
+                            <span class="btn-icon">🌟</span>
+                            <span class="btn-text">Ver Ejemplos</span>
+                        </a>
+                        <a href="formula.html" class="btn-navigate secondary">
+                            <span class="btn-icon">📐</span>
+                            <span class="btn-text">Fórmulas</span>
+                        </a>
+                        <a href="aplicaciones.html" class="btn-navigate tertiary">
+                            <span class="btn-icon">🔬</span>
+                            <span class="btn-text">Aplicaciones</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-modern">
+        <div class="footer-content">
+            <div class="footer-wave"></div>
+            <p>Página educativa sobre el Efecto Doppler | Creado por Grupo 8 - 2025</p>
+            <div class="footer-icons">
+                <span class="footer-icon">🔬</span>
+                <span class="footer-icon">📊</span>
+                <span class="footer-icon">🎵</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle modo oscuro mejorado
+        const btn = document.getElementById('toggle-dark');
+        const body = document.body;
+        const toggleIcon = btn.querySelector('.toggle-icon');
+        const toggleText = btn.querySelector('.toggle-text');
+
+        let darkMode = false;
+
+        function updateToggle() {
+            if (darkMode) {
+                body.classList.add('modo-oscuro');
+                toggleIcon.textContent = '☀️';
+                toggleText.textContent = 'Modo Claro';
+            } else {
+                body.classList.remove('modo-oscuro');
+                toggleIcon.textContent = '🌙';
+                toggleText.textContent = 'Modo Oscuro';
+            }
+        }
+
+        btn.addEventListener('click', () => {
+            darkMode = !darkMode;
+            updateToggle();
+            
+            body.style.transition = 'all 0.3s ease';
+            setTimeout(() => {
+                body.style.transition = '';
+            }, 300);
+        });
+
+        // Animación de las letras del título
+        window.addEventListener('load', () => {
+            const letters = document.querySelectorAll('.letter');
+            letters.forEach((letter, index) => {
+                letter.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Animación de las ondas Doppler
+        function animateDopplerWaves() {
+            const waves = document.querySelectorAll('.doppler-wave');
+            waves.forEach((wave, index) => {
+                wave.style.animationDelay = `${index * 0.3}s`;
+            });
+        }
+
+        // Inicializar animaciones
+        window.addEventListener('load', () => {
+            animateDopplerWaves();
+        });
+
+        // Efecto parallax suave en scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.particles-bg');
+            const soundWaves = document.querySelector('.sound-waves');
+            
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+            if (soundWaves) {
+                soundWaves.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Intersección observer para animaciones de entrada
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos animables
+        document.querySelectorAll('.card-animate, .characteristic-item, .explanation-item, .explanation-point').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Efecto hover en la imagen del diagrama
+        const imageContainer = document.querySelector('.image-container-enhanced');
+        const overlayInfo = document.querySelector('.image-overlay-info');
+
+        if (imageContainer && overlayInfo) {
+            imageContainer.addEventListener('mouseenter', () => {
+                overlayInfo.style.opacity = '1';
+            });
+
+            imageContainer.addEventListener('mouseleave', () => {
+                overlayInfo.style.opacity = '0';
+            });
+        }
+    </script>
+
+    <style>
+        /* Estilos específicos para esta página */
+        .nav-item.active {
+            background: var(--primary-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(21, 101, 192, 0.3);
+        }
+
+        .definition-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: var(--space-lg);
+            color: var(--text-color);
+        }
+
+        .definition-text strong {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+
+        .definition-text em {
+            background: linear-gradient(135deg, var(--primary-light), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        .doppler-explanation {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-lg);
+            margin-top: var(--space-lg);
+        }
+
+        .explanation-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-lg);
+            background: linear-gradient(135deg, rgba(66, 165, 245, 0.05), rgba(144, 202, 249, 0.05));
+            border-radius: var(--radius-md);
+            border-left: 4px solid var(--primary-light);
+            transition: all var(--transition-normal);
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        .explanation-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(66, 165, 245, 0.2);
+        }
+
+        .explanation-icon {
+            font-size: 3rem;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        .approaching {
+            animation-delay: 0s;
+        }
+
+        .receding {
+            animation-delay: 1s;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .explanation-text h4 {
+            color: var(--primary-dark);
+            margin-bottom: var(--space-xs);
+            font-size: 1.1rem;
+        }
+
+        .explanation-text p {
+            color: var(--text-secondary);
+        }
+
+        .history-content {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-xl);
+        }
+
+        .historical-fact {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            padding: var(--space-lg);
+            background: linear-gradient(135deg, rgba(255, 193, 7, 0.1), rgba(255, 235, 59, 0.1));
+            border-radius: var(--radius-md);
+            border-left: 4px solid #ffc107;
+        }
+
+        .fact-year {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #ffc107;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .fact-content h4 {
+            color: var(--primary-dark);
+            margin-bottom: var(--space-xs);
+            font-size: 1.3rem;
+        }
+
+        .scientist-profile {
+            display: flex;
+            align-items: center;
+            gap: var(--space-lg);
+            padding: var(--space-lg);
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(129, 199, 132, 0.1));
+            border-radius: var(--radius-md);
+            border-left: 4px solid #4caf50;
+        }
+
+        .profile-icon {
+            font-size: 4rem;
+            animation: bounce 3s ease-in-out infinite;
+        }
+
+        .profile-info h4 {
+            color: var(--primary-dark);
+            margin-bottom: var(--space-xs);
+            font-size: 1.2rem;
+        }
+
+        .visual-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-xl);
+            align-items: center;
+        }
+
+        .image-container-enhanced {
+            position: relative;
+            overflow: hidden;
+            border-radius: var(--radius-md);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.1);
+            transition: all var(--transition-normal);
+        }
+
+        .image-container-enhanced:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.2);
+        }
+
+        .doppler-diagram {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: all var(--transition-normal);
+        }
+
+        .image-overlay-info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(66, 165, 245, 0.9), rgba(144, 202, 249, 0.9));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all var(--transition-normal);
+            border-radius: var(--radius-md);
+        }
+
+        .overlay-content {
+            text-align: center;
+            color: white;
+            transform: translateY(20px);
+            transition: all var(--transition-normal);
+        }
+
+        .image-overlay-info:hover .overlay-content {
+            transform: translateY(0);
+        }
+
+        .overlay-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: var(--space-sm);
+        }
+
+        .explanation-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .explanation-point {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            padding: var(--space-md);
+            margin-bottom: var(--space-sm);
+            background: rgba(66, 165, 245, 0.05);
+            border-radius: var(--radius-sm);
+            transition: all var(--transition-normal);
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        .explanation-point:hover {
+            background: rgba(66, 165, 245, 0.1);
+            transform: translateX(5px);
+        }
+
+        .point-icon {
+            font-size: 1.2rem;
+        }
+
+        .characteristics-section {
+            background: linear-gradient(135deg, rgba(156, 39, 176, 0.05), rgba(233, 30, 99, 0.05));
+        }
+
+        .characteristics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: var(--space-lg);
+        }
+
+        .characteristic-item {
+            text-align: center;
+            padding: var(--space-lg);
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: var(--radius-md);
+            transition: all var(--transition-normal);
+            border: 2px solid transparent;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .characteristic-item:hover {
+            transform: translateY(-10px) scale(1.05);
+            border-color: var(--primary-light);
+            box-shadow: 0 15px 40px rgba(66, 165, 245, 0.2);
+        }
+
+        .char-icon {
+            font-size: 3rem;
+            margin-bottom: var(--space-md);
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .characteristic-item:nth-child(1) .char-icon { animation-delay: 0s; }
+        .characteristic-item:nth-child(2) .char-icon { animation-delay: 0.5s; }
+        .characteristic-item:nth-child(3) .char-icon { animation-delay: 1s; }
+        .characteristic-item:nth-child(4) .char-icon { animation-delay: 1.5s; }
+
+        .characteristic-item h4 {
+            color: var(--primary-dark);
+            margin-bottom: var(--space-sm);
+            font-size: 1.1rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-light));
+            color: white;
+            text-align: center;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: var(--space-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: var(--space-sm);
+        }
+
+        .cta-icon {
+            animation: rocket 2s ease-in-out infinite;
+        }
+
+        @keyframes rocket {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .cta-description {
+            font-size: 1.1rem;
+            margin-bottom: var(--space-xl);
+            opacity: 0.9;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-md);
+            flex-wrap: wrap;
+        }
+
+        .btn-navigate {
+            display: inline-flex;
+            align-items: center;
+            gap: var(--space-xs);
+            padding: var(--space-md) var(--space-lg);
+            border-radius: var(--radius-full);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all var(--transition-normal);
+            border: 2px solid transparent;
+        }
+
+        .btn-navigate.primary {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-navigate.secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-navigate.tertiary {
+            background: rgba(255, 255, 255, 0.05);
+            color: white;
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .btn-navigate:hover {
+            background: white;
+            color: var(--primary-color);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-icon {
+            font-size: 1.1rem;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .visual-section {
+                grid-template-columns: 1fr;
+                gap: var(--space-lg);
+            }
+
+            .doppler-explanation {
+                grid-template-columns: 1fr;
+            }
+
+            .historical-fact,
+            .scientist-profile {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .characteristics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .navigation-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+
+        /* Animaciones de entrada mejoradas */
+        .explanation-item:nth-child(1) { animation: fadeInUp 0.6s ease-out 0.2s forwards; }
+        .explanation-item:nth-child(2) { animation: fadeInUp 0.6s ease-out 0.4s forwards; }
+
+        .explanation-point:nth-child(1) { animation: fadeInLeft 0.6s ease-out 0.1s forwards; }
+        .explanation-point:nth-child(2) { animation: fadeInLeft 0.6s ease-out 0.2s forwards; }
+        .explanation-point:nth-child(3) { animation: fadeInLeft 0.6s ease-out 0.3s forwards; }
+        .explanation-point:nth-child(4) { animation: fadeInLeft 0.6s ease-out 0.4s forwards; }
+
+        .characteristic-item:nth-child(1) { animation: fadeInUp 0.6s ease-out 0.1s forwards; }
+        .characteristic-item:nth-child(2) { animation: fadeInUp 0.6s ease-out 0.2s forwards; }
+        .characteristic-item:nth-child(3) { animation: fadeInUp 0.6s ease-out 0.3s forwards; }
+        .characteristic-item:nth-child(4) { animation: fadeInUp 0.6s ease-out 0.4s forwards; }

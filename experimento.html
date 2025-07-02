@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Experimento</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header>
+        <h1>Experimento</h1>
+        <button id="toggle-dark" class="modo-toggle">🌙 Modo Oscuro</button>
+    </header>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="que-es.html">¿Qué es?</a>
+        <a href="ejemplos.html">Ejemplos</a>
+        <a href="formula.html">Fórmula</a>
+        <a href="aplicaciones.html">Aplicaciones</a>
+    </nav>
+    <div class="contenido">
+        <p>Aquí le mostraremos un pequeño video explicativo hecho por nosotros en el programa de FL Studio, en el cual explicamos cómo funciona el efecto Doppler:</p>
+        <div class="video">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/0hBHkn_Zi4U?si=DUwrFV-X3iCnGeK6" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
+    <footer>
+        Página educativa sobre el Efecto Doppler | Grupo 8
+    </footer>
+
+    <script>
+        const btn = document.getElementById('toggle-dark');
+        const body = document.body;
+
+        if (localStorage.getItem('modo-oscuro') === 'true') {
+            body.classList.add('modo-oscuro');
+            btn.textContent = '☀️ Modo Claro';
+        }
+
+        btn.addEventListener('click', () => {
+            body.classList.toggle('modo-oscuro');
+            const darkMode = body.classList.contains('modo-oscuro');
+            btn.textContent = darkMode ? '☀️ Modo Claro' : '🌙 Modo Oscuro';
+            localStorage.setItem('modo-oscuro', darkMode);
+        });
+    </script>
+</body>
+</html>

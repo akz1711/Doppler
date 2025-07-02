@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Fórmula del Efecto Doppler</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header>
+        <h1>Fórmula del Efecto Doppler</h1>
+        <button id="toggle-dark" class="modo-toggle">🌙 Modo Oscuro</button>
+    </header>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="que-es.html">¿Qué es?</a>
+        <a href="ejemplos.html">Ejemplos</a>
+        <a href="aplicaciones.html">Aplicaciones</a>
+        <a href="experimento.html">Experimento</a>
+    </nav>
+    <div class="contenido">
+        <p>La fórmula para calcular la frecuencia observada es:</p>
+        <div class="formula">
+            f′ = (f × (v ± v₀)) / (v ∓ vₛ)
+        </div>
+
+        <ul>
+            <li><strong>f′</strong>: frecuencia observada</li>
+            <li><strong>f</strong>: frecuencia emitida</li>
+            <li><strong>v</strong>: velocidad del medio (como el aire)</li>
+            <li><strong>v₀</strong>: velocidad del observador</li>
+            <li><strong>vₛ</strong>: velocidad de la fuente</li>
+        </ul>
+
+        <p><strong>¿Cómo elegir los signos?</strong></p>
+        <ul>
+            <li>Usa <strong>“+”</strong> si el observador se acerca a la fuente.</li>
+            <li>Usa <strong>“–”</strong> si el observador se aleja.</li>
+            <li>En el denominador, usa <strong>“–”</strong> si la fuente se acerca.</li>
+            <li>Usa <strong>“+”</strong> si la fuente se aleja.</li>
+        </ul>
+
+        <p><em>Este fenómeno es clave en aplicaciones como el radar, la astronomía y la medicina (ultrasonido Doppler).</em></p>
+
+        <h2>Calculadora del Efecto Doppler</h2>
+        <form id="dopplerForm" class="calculadora">
+            <label for="f">Frecuencia emitida (Hz):</label>
+            <input type="number" id="f" name="f" step="any" required>
+
+            <label for="v">Velocidad del medio (m/s):</label>
+            <input type="number" id="v" name="v" step="any" required value="343">
+
+            <label for="v0">Velocidad del observador (m/s):</label>
+            <input type="number" id="v0" name="v0" step="any" required>
+
+            <label for="vs">Velocidad de la fuente (m/s):</label>
+            <input type="number" id="vs" name="vs" step="any" required>
+
+            <label for="obsSign">Signo para el observador:</label>
+            <select id="obsSign" name="obsSign" required>
+                <option value="+">+</option>
+                <option value="-">-</option>
+            </select>
+
+            <label for="srcSign">Signo para la fuente:</label>
+            <select id="srcSign" name="srcSign" required>
+                <option value="-">-</option>
+                <option value="+">+</option>
+            </select>
+
+            <button type="submit">Calcular frecuencia observada</button>
+        </form>
+
+        <p><strong>Frecuencia observada (f′):</strong> <span id="result">--</span> Hz</p>
+    </div>
+    <footer>
+        Página educativa sobre el Efecto Doppler | Grupo 8
+    </footer>
+
+    <script>
+        const btn = document.getElementById('toggle-dark');
+        const body = document.body;
+
+        if (localStorage.getItem('modo-oscuro') === 'true') {
+            body.classList.add('modo-oscuro');
+            btn.textContent = '☀️ Modo Claro';
+        }
+
+        btn.addEventListener('click', () => {
+            body.classList.toggle('modo-oscuro');
+            const darkMode = body.classList.contains('modo-oscuro');
+            btn.textContent = darkMode ? '☀️ Modo Claro' : '🌙 Modo Oscuro';
+            localStorage.setItem('modo-oscuro', darkMode);
+        });
+
+        document.getElementById('dopplerForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const f = parseFloat(document.getElementById('f').value);
+            const v = parseFloat(document.getElementById('v').value);
+            const v0 = parseFloat(document.getElementById('v0').value);
+            const vs = parseFloat(document.getElementById('vs').value);
+            const obsSign = document.getElementById('obsSign').value;
+            const srcSign = document.getElementById('srcSign').value;
+
+            const obsFactor = obsSign === '+' ? 1 : -1;
+            const srcFactor = srcSign === '+' ? 1 : -1;
+
+            const numerator = v + (obsFactor * v0);
+            const denominator = v - (srcFactor * vs);
+
+            if (denominator === 0) {
+                document.getElementById('result').textContent = 'Error: División por cero';
+                return;
+            }
+
+            const fPrime = f * (numerator / denominator);
+
+            document.getElementById('result').textContent = fPrime.toFixed(2);
+        });
+    </script>
+</body>
+</html>

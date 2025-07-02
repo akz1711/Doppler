@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Efecto Doppler - Física Interactiva</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <!-- Fondo de partículas animadas -->
+    <div class="particles-bg"></div>
+    
+    <!-- Ondas de sonido animadas -->
+    <div class="sound-waves">
+        <div class="wave wave-1"></div>
+        <div class="wave wave-2"></div>
+        <div class="wave wave-3"></div>
+    </div>
+
+    <header class="hero-header">
+        <div class="header-content">
+            <div class="doppler-animation">
+                <div class="source">🚗</div>
+                <div class="observer">👤</div>
+                <div class="wave-animation">
+                    <div class="doppler-wave"></div>
+                    <div class="doppler-wave"></div>
+                    <div class="doppler-wave"></div>
+                </div>
+            </div>
+            <h1 class="title-animated">
+                <span class="letter">E</span>
+                <span class="letter">f</span>
+                <span class="letter">e</span>
+                <span class="letter">c</span>
+                <span class="letter">t</span>
+                <span class="letter">o</span>
+                <span class="space"> </span>
+                <span class="letter">D</span>
+                <span class="letter">o</span>
+                <span class="letter">p</span>
+                <span class="letter">p</span>
+                <span class="letter">l</span>
+                <span class="letter">e</span>
+                <span class="letter">r</span>
+            </h1>
+            <p class="subtitle-glow">"El Efecto Doppler: la ciencia detrás del sonido que se acerca y se aleja."</p>
+            <button id="toggle-dark" class="modo-toggle">
+                <span class="toggle-icon">🌙</span>
+                <span class="toggle-text">Modo Oscuro</span>
+            </button>
+        </div>
+        <div class="header-decoration">
+            <div class="frequency-bars">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-modern">
+        <div class="nav-container">
+            <a href="que-es.html" class="nav-item" data-text="¿Qué es?">
+                <span class="nav-icon">❓</span>
+                <span class="nav-label">¿Qué es?</span>
+            </a>
+            <a href="ejemplos.html" class="nav-item" data-text="Ejemplos">
+                <span class="nav-icon">🌟</span>
+                <span class="nav-label">Ejemplos</span>
+            </a>
+            <a href="formula.html" class="nav-item" data-text="Fórmula">
+                <span class="nav-icon">📐</span>
+                <span class="nav-label">Fórmula</span>
+            </a>
+            <a href="aplicaciones.html" class="nav-item" data-text="Aplicaciones">
+                <span class="nav-icon">🔬</span>
+                <span class="nav-label">Aplicaciones</span>
+            </a>
+            <a href="experimento.html" class="nav-item" data-text="Experimento">
+                <span class="nav-icon">🎵</span>
+                <span class="nav-label">Experimento</span>
+            </a>
+        </div>
+    </nav>
+
+    <main class="contenido">
+        <section class="welcome-section">
+            <div class="content-card card-animate">
+                <h2 class="section-title">
+                    <span class="title-decoration">🎯</span>
+                    Bienvenido al sitio del Efecto Doppler
+                </h2>
+                
+                <div class="team-section">
+                    <h3 class="team-title">Este grupo está conformado por:</h3>
+                    <ul class="team-list">
+                        <li class="team-member">
+                            <span class="member-icon">👨‍🎓</span>
+                            Iván Jeanpierre Canales Samaniego
+                        </li>
+                        <li class="team-member">
+                            <span class="member-icon">👨‍🎓</span>
+                            Jousthyne Denny Cepda Almeida
+                        </li>
+                        <li class="team-member">
+                            <span class="member-icon">👨‍🎓</span>
+                            Miguel Angel de la Rosa Mirando
+                        </li>
+                        <li class="team-member">
+                            <span class="member-icon">👨‍🎓</span>
+                            Jerenmi Shamir Flores Jimenez
+                        </li>
+                        <li class="team-member">
+                            <span class="member-icon">👨‍🎓</span>
+                            Joel Angel Brito Lopez
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="content-card card-animate" style="animation-delay: 0.2s;">
+                <div class="topics-section">
+                    <h3 class="topics-title">En esta página web estaremos explicando:</h3>
+                    <div class="topics-grid">
+                        <div class="topic-card">
+                            <div class="topic-icon">❓</div>
+                            <h4>¿Qué es el Efecto Doppler?</h4>
+                            <p>Descubre los fundamentos de este fenómeno físico</p>
+                        </div>
+                        <div class="topic-card">
+                            <div class="topic-icon">🌟</div>
+                            <h4>Ejemplos del Efecto Doppler</h4>
+                            <p>Situaciones cotidianas donde se manifiesta</p>
+                        </div>
+                        <div class="topic-card">
+                            <div class="topic-icon">📐</div>
+                            <h4>Fórmula del Efecto Doppler</h4>
+                            <p>Ecuaciones matemáticas que lo describen</p>
+                        </div>
+                        <div class="topic-card">
+                            <div class="topic-icon">🔬</div>
+                            <h4>Aplicaciones del Efecto Doppler</h4>
+                            <p>Usos prácticos en ciencia y tecnología</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-card card-animate fl-studio-section" style="animation-delay: 0.4s;">
+                <div class="studio-content">
+                    <div class="studio-text">
+                        <h3 class="studio-title">
+                            <span class="music-note">🎵</span>
+                            Experimento con FL Studio
+                        </h3>
+                        <p>Realizaremos un experimento práctico utilizando FL Studio para demostrar el efecto Doppler en el ámbito musical y sonoro.</p>
+                    </div>
+                    <div class="studio-image">
+                        <div class="image-container">
+                            <img src="FLSTUDIO.png" alt="FL Studio" class="fl-studio-img"/>
+                            <div class="image-overlay">
+                                <div class="play-button">▶️</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer-modern">
+        <div class="footer-content">
+            <div class="footer-wave"></div>
+            <p>Página educativa sobre el Efecto Doppler | Creado por Grupo 8 - 2025</p>
+            <div class="footer-icons">
+                <span class="footer-icon">🔬</span>
+                <span class="footer-icon">📊</span>
+                <span class="footer-icon">🎵</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Toggle modo oscuro mejorado
+        const btn = document.getElementById('toggle-dark');
+        const body = document.body;
+        const toggleIcon = btn.querySelector('.toggle-icon');
+        const toggleText = btn.querySelector('.toggle-text');
+
+        // Verificar modo guardado en localStorage (sin usar localStorage en artifacts)
+        let darkMode = false;
+
+        function updateToggle() {
+            if (darkMode) {
+                body.classList.add('modo-oscuro');
+                toggleIcon.textContent = '☀️';
+                toggleText.textContent = 'Modo Claro';
+            } else {
+                body.classList.remove('modo-oscuro');
+                toggleIcon.textContent = '🌙';
+                toggleText.textContent = 'Modo Oscuro';
+            }
+        }
+
+        btn.addEventListener('click', () => {
+            darkMode = !darkMode;
+            updateToggle();
+            
+            // Efecto de transición suave
+            body.style.transition = 'all 0.3s ease';
+            setTimeout(() => {
+                body.style.transition = '';
+            }, 300);
+        });
+
+        // Animación de las letras del título
+        window.addEventListener('load', () => {
+            const letters = document.querySelectorAll('.letter');
+            letters.forEach((letter, index) => {
+                letter.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Animación de las ondas Doppler
+        function animateDopplerWaves() {
+            const waves = document.querySelectorAll('.doppler-wave');
+            waves.forEach((wave, index) => {
+                wave.style.animationDelay = `${index * 0.3}s`;
+            });
+        }
+
+        // Inicializar animaciones
+        window.addEventListener('load', () => {
+            animateDopplerWaves();
+            
+            // Animar barras de frecuencia
+            const bars = document.querySelectorAll('.frequency-bars .bar');
+            bars.forEach((bar, index) => {
+                bar.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+
+        // Efecto parallax suave en scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.particles-bg');
+            const soundWaves = document.querySelector('.sound-waves');
+            
+            if (parallax) {
+                parallax.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+            if (soundWaves) {
+                soundWaves.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Intersección observer para animaciones de entrada
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observar elementos animables
+        document.querySelectorAll('.card-animate, .topic-card, .team-member').forEach(el => {
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>

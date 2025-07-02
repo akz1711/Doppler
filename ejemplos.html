@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Ejemplos del Efecto Doppler</title>
+    <link rel="stylesheet" href="estilo.css">
+</head>
+<body>
+    <header>
+        <h1>Ejemplos del Efecto Doppler</h1>
+        <button id="toggle-dark" class="modo-toggle">🌙 Modo Oscuro</button>
+    </header>
+    <nav>
+        <a href="index.html">Inicio</a>
+        <a href="que-es.html">¿Qué es?</a>
+        <a href="formula.html">Fórmula</a>
+        <a href="aplicaciones.html">Aplicaciones</a>
+        <a href="experimento.html">Experimento</a>
+    </nav>
+    <div class="contenido">
+        <h2>Ejemplo de una sirena de ambulancia</h2>
+        <p>Cuando una ambulancia se acerca con la sirena encendida, el sonido que percibimos es más agudo. En cambio, cuando se aleja, el sonido se vuelve <strong> más grave.</strong></p>
+        <h3>Explicación:</h3>
+        <p>Esto sucede porque, al acercarse, las ondas sonoras se comprimen, aumentando su frecuencia. Al alejarse, las ondas se expanden, reduciendo la frecuencia. Esto es el Efecto Doppler aplicado al sonido.</p>
+        <div style="text-align: center;">
+            <img src="ambulancia.jpg" alt="Texto alternativo" style="width: 600px; height: auto;">
+        </div>
+        <h2>Ejemplo 2: Luz de una estrella lejana</h2>
+        <p>En astronomía, si una estrella se aleja de la Tierra, su luz tiende a desplazarse hacia el rojo (corrimiento al rojo). Si se acerca, la luz se desplaza hacia el azul (corrimiento al azul).</p>
+        <h3>Explicación:</h3>
+        <p>Este efecto ocurre porque las ondas electromagnéticas (como la luz) también se ven afectadas por el movimiento relativo. Es esencial para medir la velocidad de galaxias y la expansión del universo.</p>
+        <div style="text-align: center;">
+            <img src="efecto-doppler-astronomia.jpg" alt="Texto alternativo" style="width: 550px; height: auto;">
+        </div>
+        <h2>Ejemplo 3: Radar de velocidad</h2>
+        <p>Los radares de tráfico utilizan el Efecto Doppler para calcular la velocidad de los autos. Emiten ondas que rebotan en el vehículo y regresan modificadas.</p>
+        <h3>Explicación:</h3>
+        <p>Si el coche se mueve hacia el radar, la frecuencia de retorno es más alta; si se aleja, es más baja. El radar compara esta diferencia y calcula la velocidad con gran precisión.</p>
+        <div style="text-align: center;">
+            <img src="radar.jpeg" alt="Texto alternativo" style="width: 550px; height: auto;">
+            <p><strong>De igual manera veremos la Fórmula de efecto Doppler, se encontrará en la parte de arriba☝🏻</strong></p>
+        </div>
+    </div>
+    <footer>
+        Página educativa sobre el Efecto Doppler | Grupo 8
+    </footer>
+
+    <script>
+        const btn = document.getElementById('toggle-dark');
+        const body = document.body;
+
+        if (localStorage.getItem('modo-oscuro') === 'true') {
+            body.classList.add('modo-oscuro');
+            btn.textContent = '☀️ Modo Claro';
+        }
+
+        btn.addEventListener('click', () => {
+            body.classList.toggle('modo-oscuro');
+            const darkMode = body.classList.contains('modo-oscuro');
+            btn.textContent = darkMode ? '☀️ Modo Claro' : '🌙 Modo Oscuro';
+            localStorage.setItem('modo-oscuro', darkMode);
+        });
+    </script>
+</body>
+</html>
